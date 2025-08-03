@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Layout from '../../components/Layout';
 import Link from 'next/link';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import { getSortedPostsData } from '../../lib/posts';
 
 /**
@@ -10,6 +11,9 @@ import { getSortedPostsData } from '../../lib/posts';
  * encourage click‑through.
  */
 export default function Blog({ posts }) {
+  const { data: session } = useSession();
+  const isAuthorized = session?.user?.email === process.env.NEXT_PUBLIC_AUTHORIZED_EMAIL;
+
   return (
     <Layout>
       <Head>
@@ -27,12 +31,34 @@ export default function Blog({ posts }) {
                   <a className="text-xl text-blue-600 hover:underline font-medium">{title}</a>
                 </Link>
                 {date && (
-                  <p className="text-sm text-gray-500 mt-1">{new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {new Date(date).toLocaleDateString(undefined, {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </p>
                 )}
               </li>
             ))}
           </ul>
         )}
+        <div className="mt-8">
+          {isAuthorized ? (
+            <>
+              <Link href="/blog/new" legacyBehavior>
+                <a className="text-blue-600 hover:underline font-medium">Create New Post</a>
+              </Link>
+              <button onClick={() => signOut()} className="ml-4 text-sm text-gray-600">
+                Sign out
+              </button>
+            </>
+          ) : (
+            <button onClick={() => signIn('google')} className="text-blue-600 hover:underline">
+              Sign in to create posts
+            </button>
+          )}
+        </div>
       </section>
     </Layout>
   );
