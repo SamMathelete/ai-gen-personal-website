@@ -1,0 +1,148 @@
+\documentclass[10pt,letterpaper]{article}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\usepackage[left=0.5in,top=0.5in,right=0.5in,bottom=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+
+% Define links style
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=teal,
+}
+
+% Custom section formatting
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-2pt}]
+
+%----------------------------------------------------------------------------------------
+%	CUSTOM COMMANDS
+%----------------------------------------------------------------------------------------
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{#2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+%----------HEADING-----------------
+\begin{center}
+    {\Huge \scshape Sambit Mishra} \\ \vspace{2pt}
+    \small PhD Student, Electrical \& Computer Engineering $|$ University of Southern California \\ \vspace{2pt}
+    \href{mailto:sambitmi@usc.edu}{\faEnvelope \ sambitmi@usc.edu}
+\end{center}
+
+%-----------RESEARCH FOCUS-----------------
+\section{Research Focus}
+\small{
+Causal inference and probabilistic graphical models, with emphasis on scalable continuous optimization methods for causal discovery in high-dimensional data. Focused on reliable structure learning under distribution shift, with applications to fraud detection and decision systems.
+}
+\vspace{-8pt}
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Southern California (USC)}{Los Angeles, CA, USA}
+      {Ph.D. in Electrical and Computer Engineering; Advisor: Prof. Urbashi Mitra}{Aug 2025 -- Present}
+      \resumeItem{\textbf{GPA: 4.00/4.00}}
+      \resumeItem{\textbf{Coursework Taken:} Probability Theory (EE 503 - Fall 2025, Grade: A) , Linear Algebra (EE 510 - Fall 2025, Grade: A), Supervised Machine Learning (EE 559 - Spring 2026, Ongoing), Inference \& Estimation Theory (EE 563 - Spring 2026, Ongoing).}
+
+    \vspace{10pt}
+
+    \resumeSubheading
+      {Indian Institute of Technology (IIT) Bhubaneswar}{Bhubaneswar, Odisha, India}
+      {B.Tech. (Hons.) in Electronics and Communication Engineering; Advisor: Dr. Soumya P. Dash}{2021 -- 2025}
+      \resumeItem{\textbf{GPA: 9.14/10.00}}
+  \resumeSubHeadingListEnd
+
+%-----------RESEARCH EXPERIENCE-----------------
+\section{Research Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+  {Graduate Research Assistant}{Los Angeles, CA, USA}
+  {Ming Hsieh Department of Electrical and Computer Engineering, USC}{Aug 2025 -- Present}
+  \begin{itemize}[leftmargin=*, noitemsep]
+    \resumeItem{Developing continuous optimization methods for scalable DAG estimation using differentiable constraints to reduce iterations and enable large-scale batching.}
+    \resumeItem{Designed a soft-intervention selection framework to improve causal discovery efficiency and lower experimental costs.}
+    \resumeItem{Studying identifiability of causal graphs under finite samples and latent variable settings.}
+    \resumeItem{Built GPU-accelerated structure learning pipelines in PyTorch using Adam and L-BFGS for non-convex optimization.}
+  \end{itemize}
+
+    \resumeSubheading
+      {Undergraduate Researcher}{Bhubaneswar, Odisha, India}
+      {School of Electrical and Computer Sciences, IIT Bhubaneswar}{Aug 2024 -- May 2025}
+      \begin{itemize}[leftmargin=*, noitemsep]
+        \resumeItem{Developed SER-optimized modulation schemes for RIS-assisted non-coherent communication systems.}
+        \resumeItem{Conducted error analysis for multi-level ASK modulations, optimizing energy efficiency.}
+      \end{itemize}
+
+  \resumeSubHeadingListEnd
+
+%-----------PUBLICATIONS (HIGHLIGHTED)-----------------
+\section{Publications}
+\small \begin{enumerate}[leftmargin=*, label={[\arabic*]}]
+    \item  C. Peng, \textbf{S. Mishra}, U. Mitra, ``Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery,'' \textit{IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP)}, accepted, 2026.
+
+    \item \textbf{S. Mishra}, S. P. Dash and G. C. Alexandropoulos,``SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception," in \emph{IEEE Transactions on Green Communications and Networking}, vol. 10, pp. 1433-1445, 2026, doi: 10.1109/TGCN.2025.3633182.
+
+    \item \textbf{S. Mishra} and S. P. Dash,``Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System," in \emph{IEEE Wireless Communications Letters}, vol. 15, pp. 300-304, 2026, doi: 10.1109/LWC.2025.3624154.
+
+\end{enumerate}
+
+\section{Awards \& Academic Distinctions}
+\begin{itemize}[leftmargin=*, noitemsep]
+  \item Secured All India Rank 4000 among $\sim$1{,}000{,}000 candidates in JEE Advanced 2021, India
+  \item Awarded National Talent Search Scholarship by achieving a rank among the top 2000 students among $\sim$1{,}200{,}000 candidates in National Talent Search Examination (NTSE) 2019, Government of India
+  \item Qualified Regional Mathematical Olympiad (RMO) 2019; Selected participant, Indian National Mathematical Olympiad (INMO) 2020
+\end{itemize}
+
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=*, noitemsep]
+    \item \textbf{Causal Inference:} Causal Discovery, Bayesian Networks, Structural Equation Models
+    \item \textbf{Optimization:} Gradient-based solvers (Adam, RMSProp, L-BFGS), Convex Optimization, Bilevel Optimization.
+    \item \textbf{Programming \& Tools:} Python (PyTorch, NumPy, SciPy), C++, CUDA, MATLAB, Git, LaTeX.
+ \end{itemize}
+
+%-----------INDUSTRY EXPERIENCE (COMPRESSED)-----------------
+\section{Industry Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {NVIDIA Corporation}{Bengaluru, Karnataka, India}
+      {ASIC Engineering Intern, CHI VIP Team}{May 2024 -- July 2024}
+      \vspace{8pt}
+      \newline
+      Verified CHI protocol compliance for CPU/GPU IPs using SystemVerilog and Perl automation; ensured interoperability between internal and external verification IPs.
+  \resumeSubHeadingListEnd
+
+\end{document}
