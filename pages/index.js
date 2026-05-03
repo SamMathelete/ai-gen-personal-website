@@ -274,7 +274,7 @@ export default function Home() {
             </h2>
             <div className="space-y-5 text-graphite leading-relaxed">
               <p>
-                Before USC I read Electronics &amp; Communication Engineering at IIT Bhubaneswar,
+                Before USC, I studied Electronics &amp; Communication Engineering at IIT Bhubaneswar,
                 graduating with a B.Tech (Hons.) in 2025 and a 9.14/10.00 GPA. There I worked with
                 Dr. Soumya P. Dash on SER-optimized modulation schemes for RIS-assisted noncoherent
                 wireless systems — work that has since appeared in IEEE TGCN and IEEE WCL.
