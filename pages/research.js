@@ -1,58 +1,198 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
 
-/**
- * The Research page showcases the projects and topics I have explored.
- * It pulls information from my CV and presents it in a reader‑friendly format.
- */
+const themes = [
+  {
+    title: 'Scalable causal discovery',
+    body:
+      'Continuous-optimization formulations of structure learning that replace combinatorial search with differentiable acyclicity constraints, enabling GPU-accelerated batching across very high-dimensional graphs.',
+  },
+  {
+    title: 'Optimized soft interventions',
+    body:
+      'Designing intervention selection policies that maximize identifiability gain per experiment — lowering the cost of causal discovery in regimes where interventions are expensive or risky.',
+  },
+  {
+    title: 'Identifiability under shift',
+    body:
+      'Studying when and how causal graphs can be recovered with finite samples, latent confounders, and distribution shift between training and deployment — the conditions under which structure can be trusted.',
+  },
+  {
+    title: 'RIS-assisted noncoherent communication',
+    body:
+      'Earlier work on SER-optimized multi-level ASK modulations and energy/sign-based receivers for reconfigurable intelligent surface (RIS)–assisted wireless systems, with closed-form error analysis.',
+  },
+];
+
+const publications = [
+  {
+    n: '01',
+    venue: 'ICASSP 2026',
+    status: 'Accepted',
+    title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
+    authors: 'C. Peng, S. Mishra, U. Mitra',
+    note: 'Proposes a learning-based framework for selecting soft interventions that improves causal-discovery efficiency and reduces experimental cost.',
+  },
+  {
+    n: '02',
+    venue: 'IEEE Transactions on Green Communications and Networking',
+    status: 'Vol. 10, pp. 1433–1445, 2026',
+    title: 'SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception',
+    authors: 'S. Mishra, S. P. Dash, G. C. Alexandropoulos',
+    doi: '10.1109/TGCN.2025.3633182',
+    note: 'Investigates one- and two-sided ASK modulations in noncoherent SISO systems assisted by an RIS, proposing novel energy- and sign-based receiver structures.',
+  },
+  {
+    n: '03',
+    venue: 'IEEE Wireless Communications Letters',
+    status: 'Vol. 15, pp. 300–304, 2026',
+    title: 'Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System',
+    authors: 'S. Mishra, S. P. Dash',
+    doi: '10.1109/LWC.2025.3624154',
+    note: 'Considers RIS-aided wireless communication with one-sided ASK and an optimal noncoherent maximum-likelihood detection rule.',
+  },
+];
+
+const earlierProjects = [
+  {
+    title: 'Fully-analog audio system with active noise cancellation',
+    affiliation: 'Electronic System Design Lab, IIT Bhubaneswar',
+    period: 'Aug 2024 — Oct 2024',
+    points: [
+      'Designed a noise-resilient audio system using a fully analog implementation of active noise cancellation.',
+      'Performed circuit simulations in Multisim and laid out PCBs in KiCAD.',
+    ],
+  },
+];
+
 export default function Research() {
-  const projects = [
-    {
-      title: 'RIS-Assisted Noncoherent Wireless System: Error Analysis with Optimal Receiver and Multi-level ASK',
-      affiliation: 'Wireless Communication Lab, IIT Bhubaneswar',
-      duration: 'Sep 2024 – May 2025',
-      description: [
-        'Developed optimized Amplitude Shift Keying (ASK) designs for low symbol error rate in reconfigurable intelligent surface (RIS) assisted systems with non‑coherent receivers.',
-        'Modeled, simulated and validated designs using MATLAB, enhancing system performance across diverse environments.',
-        'Explored Rician fading channels, RIS technology and energy‑based non‑coherent receivers.',
-      ],
-    },
-    {
-      title: 'Fully‑Analog Audio System with Active Noise Cancellation',
-      affiliation: 'Electronic System Design Lab, IIT Bhubaneswar',
-      duration: 'Aug 2024 – Oct 2024',
-      description: [
-        'Designed and built a noise‑resilient audio system using a fully analog implementation of active noise cancellation.',
-        'Performed circuit simulations in Multisim and created printed circuit boards with KiCAD.',
-        'Gained hands‑on experience in audio system design, active noise cancellation and analog electronics.',
-      ],
-    },
-  ];
   return (
     <Layout>
       <Head>
         <title>Research | Sambit Mishra</title>
       </Head>
-      <section className="space-y-8">
-        <div>
-          <h1 className="text-3xl font-bold mb-4">Research</h1>
-          <p className="text-gray-700">
-            My research interests lie at the intersection of wireless communication, signal processing and integrated circuit design. Below are some of the projects I've been involved in. As I transition into PhD work, I look forward to exploring more advanced topics and contributing new insights to the field.
-          </p>
-        </div>
-        {projects.map((project) => (
-          <div key={project.title} className="bg-white shadow rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-1">{project.title}</h2>
-            <p className="text-sm text-gray-500 italic mb-2">
-              {project.affiliation} — {project.duration}
-            </p>
-            <ul className="list-disc list-inside text-gray-700 space-y-1">
-              {project.description.map((point, idx) => (
-                <li key={idx}>{point}</li>
-              ))}
-            </ul>
+
+      {/* HEADER */}
+      <section className="container-wide pt-12 sm:pt-20 pb-12">
+        <p className="eyebrow mb-4 flex items-center gap-3">
+          <span className="inline-block w-6 h-px bg-ember" /> Research
+        </p>
+        <h1 className="font-display text-5xl sm:text-6xl tracking-tightest text-ink leading-[0.95] max-w-4xl">
+          Reliable causal structure, learned at scale.
+        </h1>
+        <p className="mt-6 text-lg text-graphite max-w-3xl leading-relaxed">
+          My research lives at the intersection of causal inference, probabilistic graphical models,
+          and continuous optimization. The unifying question: how do we recover causal graphs that
+          remain trustworthy when data are scarce, partially observed, or drawn from a different
+          distribution than the one we&rsquo;ll deploy on?
+        </p>
+      </section>
+
+      {/* THEMES */}
+      <section className="container-wide py-12 border-t border-rule">
+        <div className="grid lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-3">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ 01</p>
+            <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">Themes.</h2>
           </div>
-        ))}
+          <div className="lg:col-span-9 grid sm:grid-cols-2 gap-px bg-rule rounded-2xl overflow-hidden border border-rule">
+            {themes.map((t, i) => (
+              <article key={t.title} className="bg-paper p-6 sm:p-8">
+                <p className="font-mono text-xs text-ember mb-3">/ 0{i + 1}</p>
+                <h3 className="font-display text-xl tracking-tightest text-ink">{t.title}</h3>
+                <p className="mt-3 text-graphite text-sm leading-relaxed">{t.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PUBLICATIONS */}
+      <section className="bg-cream border-t border-rule">
+        <div className="container-wide py-16">
+          <div className="grid lg:grid-cols-12 gap-8 mb-10">
+            <div className="lg:col-span-3">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ 02</p>
+              <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">Publications.</h2>
+            </div>
+            <div className="lg:col-span-9">
+              <p className="text-graphite max-w-2xl">
+                Peer-reviewed work in causal inference and wireless communications. For the most
+                up-to-date list see my <a className="link-underline" href="https://scholar.google.com/citations?user=kyCSMKUAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a> profile.
+              </p>
+            </div>
+          </div>
+
+          <ol className="space-y-2">
+            {publications.map((p) => (
+              <li key={p.n} className="border-t border-rule first:border-t-0">
+                <div className="grid sm:grid-cols-12 gap-4 py-7">
+                  <div className="sm:col-span-1 font-mono text-xs text-ash">[{p.n}]</div>
+                  <div className="sm:col-span-3">
+                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink">{p.venue}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ember mt-1">{p.status}</p>
+                  </div>
+                  <div className="sm:col-span-8">
+                    <h3 className="font-display text-xl sm:text-2xl text-ink leading-snug tracking-tightest">{p.title}</h3>
+                    <p className="mt-2 text-sm text-ash">{p.authors}</p>
+                    <p className="mt-3 text-graphite text-sm leading-relaxed">{p.note}</p>
+                    {p.doi && (
+                      <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block font-mono text-xs link-underline text-ember">
+                        doi: {p.doi}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* EARLIER PROJECTS */}
+      <section className="container-wide py-16">
+        <div className="grid lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-3">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ 03</p>
+            <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">Earlier projects.</h2>
+          </div>
+          <div className="lg:col-span-9 space-y-8">
+            {earlierProjects.map((p) => (
+              <article key={p.title} className="card card-hover">
+                <div className="flex flex-wrap justify-between items-baseline gap-2">
+                  <h3 className="font-display text-xl tracking-tightest text-ink">{p.title}</h3>
+                  <span className="font-mono text-xs text-ash">{p.period}</span>
+                </div>
+                <p className="text-sm text-ash italic mt-1">{p.affiliation}</p>
+                <ul className="mt-4 space-y-2">
+                  {p.points.map((pt, i) => (
+                    <li key={i} className="flex gap-3 text-graphite">
+                      <span className="text-ember mt-2 shrink-0">▹</span>
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="container-wide pb-20">
+        <div className="card border-ink/15 bg-ink text-paper text-center py-14">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-ember mb-4">Collaborate</p>
+          <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-paper">
+            Working on a related question?
+          </h2>
+          <p className="mt-3 text-paper/75 max-w-xl mx-auto">
+            I&rsquo;m always glad to chat about causal discovery, identifiability, or scalable
+            structure-learning methods.
+          </p>
+          <a href="mailto:sambitmi@usc.edu" className="mt-7 inline-flex items-center gap-2 bg-ember text-paper px-5 py-2.5 rounded-full text-sm font-medium no-underline hover:bg-emberSoft hover:text-ink transition-colors">
+            sambitmi@usc.edu
+          </a>
+        </div>
       </section>
     </Layout>
   );
