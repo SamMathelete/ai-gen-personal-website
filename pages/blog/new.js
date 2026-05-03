@@ -29,55 +29,56 @@ export default function NewPost() {
   if (!session) {
     return (
       <Layout>
-        <p className="mb-4">You must sign in to create a post.</p>
-        <button
-          onClick={() => signIn('google')}
-          className="px-4 py-2 bg-blue-600 text-white rounded"
-        >
-          Sign in with Google
-        </button>
+        <section className="container-prose py-20 text-center">
+          <p className="font-display text-2xl text-ink mb-6 tracking-tightest">Sign in required.</p>
+          <button onClick={() => signIn('google')} className="btn-primary">Sign in with Google</button>
+        </section>
       </Layout>
     );
   }
 
   return (
     <Layout>
-      <h1 className="text-3xl font-bold mb-4">Create New Post</h1>
-      <form onSubmit={submit} className="flex flex-col space-y-4">
-        <input
-          className="border p-2"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          className="border p-2"
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-        <textarea
-          className="border p-2 h-60"
-          placeholder="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <div className="flex space-x-4">
-          <button
-            type="submit"
-            className="px-4 py-2 bg-green-600 text-white rounded"
-          >
-            Create Post
-          </button>
-          <button
-            type="button"
-            onClick={() => signOut()}
-            className="px-4 py-2 bg-gray-300 rounded"
-          >
-            Sign out
-          </button>
-        </div>
-      </form>
+      <section className="container-prose pt-12 sm:pt-20 pb-20">
+        <p className="eyebrow mb-4">New post</p>
+        <h1 className="font-display text-4xl sm:text-5xl tracking-tightest text-ink leading-[1.0] mb-10">
+          Create a new entry.
+        </h1>
+
+        <form onSubmit={submit} className="space-y-5">
+          <div>
+            <label className="font-mono text-xs uppercase tracking-[0.18em] text-ash">Title</label>
+            <input
+              className="mt-2 w-full bg-cream border border-rule rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-ember transition-colors"
+              placeholder="A working title…"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div>
+            <label className="font-mono text-xs uppercase tracking-[0.18em] text-ash">Date</label>
+            <input
+              className="mt-2 w-full bg-cream border border-rule rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-ember transition-colors"
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+          <div>
+            <label className="font-mono text-xs uppercase tracking-[0.18em] text-ash">Content (Markdown)</label>
+            <textarea
+              className="mt-2 w-full bg-cream border border-rule rounded-lg px-4 py-3 h-72 text-ink font-mono text-sm focus:outline-none focus:border-ember transition-colors"
+              placeholder="# Heading&#10;&#10;Paragraph…"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
+          </div>
+          <div className="flex gap-4 pt-2">
+            <button type="submit" className="btn-primary">Publish</button>
+            <button type="button" onClick={() => signOut()} className="btn-ghost">Sign out</button>
+          </div>
+        </form>
+      </section>
     </Layout>
   );
 }

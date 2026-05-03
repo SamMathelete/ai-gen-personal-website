@@ -1,99 +1,115 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
 
-/**
- * The CV page presents a structured overview of my academic background,
- * professional experience, projects, skills and achievements. The
- * information is adapted from my attached résumé to suit a web
- * format. Feel free to download the full PDF if you'd like a
- * printable version.
- */
 export default function CV() {
   const education = [
     {
-      degree: 'Bachelor of Technology in Electronics and Communication Engineering',
-      institution: 'Indian Institute of Technology Bhubaneswar',
-      period: '2021 – 2025',
-      details: ['CGPA: 9.09/10'],
+      degree: 'Ph.D., Electrical and Computer Engineering',
+      institution: 'University of Southern California (USC)',
+      location: 'Los Angeles, CA, USA',
+      period: 'Aug 2025 — Present',
+      details: [
+        'Advisor: Prof. Urbashi Mitra, Ming Hsieh Department of ECE',
+        'GPA: 4.00/4.00',
+        'Coursework: Probability Theory (EE 503, A), Linear Algebra (EE 510, A), Supervised Machine Learning (EE 559, ongoing), Inference & Estimation Theory (EE 563, ongoing).',
+      ],
     },
     {
-      degree: 'Grade 12 (CBSE)',
-      institution: 'B.J.E.M. School',
-      period: '2021',
-      details: ['Score: 97.2%'],
-    },
-    {
-      degree: 'Grade 10 (CBSE)',
-      institution: 'B.J.E.M. School',
-      period: '2019',
-      details: ['Score: 97.6%'],
-    },
-  ];
-
-  const experience = [
-    {
-      title: 'ASIC Intern – CHI VIP Team',
-      organisation: 'NVIDIA Corporation',
-      period: 'May 2024 – Jul 2024',
-      responsibilities: [
-        'Verified the CHI compliance of a critical verification IP used by CPU, GPU and MSS teams at NVIDIA.',
-        'Tested interoperability between NV‑CHI VIP and external verification IPs to ensure protocol compliance.',
-        'Designed comprehensive test sequences and interfaces using SystemVerilog and UVM, boosting testing efficiency.',
+      degree: 'B.Tech. (Hons.), Electronics and Communication Engineering',
+      institution: 'Indian Institute of Technology (IIT) Bhubaneswar',
+      location: 'Bhubaneswar, Odisha, India',
+      period: '2021 — 2025',
+      details: [
+        'Advisor: Dr. Soumya P. Dash',
+        'GPA: 9.14/10.00',
       ],
     },
   ];
 
-  const projects = [
+  const research = [
     {
-      name: 'RIS‑Assisted Noncoherent Wireless System: Error Analysis with Optimal Receiver and Multi‑level ASK',
-      affiliation: 'Wireless Communication Lab, IIT Bhubaneswar',
-      period: 'Sep 2024 – May 2025',
+      title: 'Graduate Research Assistant',
+      org: 'Ming Hsieh Department of Electrical and Computer Engineering, USC',
+      location: 'Los Angeles, CA, USA',
+      period: 'Aug 2025 — Present',
       points: [
-        'Developed optimized ASK designs for low symbol error rates in RIS‑assisted systems with non‑coherent receivers.',
-        'Modeled and simulated designs in MATLAB to validate performance improvements across various channel conditions.',
-        'Gained expertise in Rician fading channels, reconfigurable intelligent surfaces and energy‑based receivers.',
+        'Developing continuous-optimization methods for scalable DAG estimation using differentiable acyclicity constraints, reducing iterations and enabling large-scale batching.',
+        'Designed a soft-intervention selection framework that improves causal-discovery efficiency and lowers experimental cost.',
+        'Studying identifiability of causal graphs under finite samples and latent-variable settings.',
+        'Built GPU-accelerated structure-learning pipelines in PyTorch using Adam and L-BFGS for non-convex optimization.',
       ],
     },
     {
-      name: 'Fully‑Analog Audio System with Active Noise Cancellation',
-      affiliation: 'Electronic System Design Lab, IIT Bhubaneswar',
-      period: 'Aug 2024 – Oct 2024',
+      title: 'Undergraduate Researcher',
+      org: 'School of Electrical and Computer Sciences, IIT Bhubaneswar',
+      location: 'Bhubaneswar, Odisha, India',
+      period: 'Aug 2024 — May 2025',
       points: [
-        'Designed a noise‑resilient audio system using a fully analog implementation of active noise cancellation.',
-        'Conducted circuit simulations with Multisim and created PCBs using KiCAD.',
-        'Developed skills in audio system design, active noise cancellation and analog electronics.',
+        'Developed SER-optimized modulation schemes for RIS-assisted non-coherent communication systems.',
+        'Conducted error analysis for multi-level ASK modulations, optimizing energy efficiency.',
+      ],
+    },
+  ];
+
+  const publications = [
+    {
+      ref: '[1]',
+      authors: 'C. Peng, S. Mishra, U. Mitra',
+      title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
+      venue: 'IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP)',
+      year: 'accepted, 2026',
+    },
+    {
+      ref: '[2]',
+      authors: 'S. Mishra, S. P. Dash, G. C. Alexandropoulos',
+      title: 'SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception',
+      venue: 'IEEE Transactions on Green Communications and Networking, vol. 10, pp. 1433–1445',
+      year: '2026',
+      doi: '10.1109/TGCN.2025.3633182',
+    },
+    {
+      ref: '[3]',
+      authors: 'S. Mishra, S. P. Dash',
+      title: 'Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System',
+      venue: 'IEEE Wireless Communications Letters, vol. 15, pp. 300–304',
+      year: '2026',
+      doi: '10.1109/LWC.2025.3624154',
+    },
+  ];
+
+  const industry = [
+    {
+      title: 'ASIC Engineering Intern, CHI VIP Team',
+      org: 'NVIDIA Corporation',
+      location: 'Bengaluru, Karnataka, India',
+      period: 'May 2024 — Jul 2024',
+      points: [
+        'Verified CHI protocol compliance for CPU/GPU IPs using SystemVerilog and Perl automation.',
+        'Ensured interoperability between internal and external verification IPs.',
       ],
     },
   ];
 
   const skills = {
-    technical: ['MATLAB', 'KiCAD', 'Cadence Virtuoso', 'SystemVerilog', 'UVM', 'Verilog', 'C++'],
-    coursework: [
-      'Wireless and Mobile Communication',
-      'Digital VLSI Design',
-      'Analog VLSI Design',
-      'Advanced Communication Engineering',
-      'RF and Microwave Engineering',
-      'Control Systems',
-      'Digital Signal Processing',
-    ],
-    soft: ['Leadership', 'Problem solving', 'Analytical skills', 'Communication', 'Adaptability'],
+    'Causal Inference': ['Causal Discovery', 'Bayesian Networks', 'Structural Equation Models'],
+    'Optimization': ['Adam', 'RMSProp', 'L-BFGS', 'Convex Optimization', 'Bilevel Optimization'],
+    'Programming & Tools': ['Python', 'PyTorch', 'NumPy', 'SciPy', 'C++', 'CUDA', 'MATLAB', 'Git', 'LaTeX'],
   };
 
-  const achievements = [
-    'Qualified National Talent Search Examination 2019',
-    'Qualified Regional Mathematical Olympiad 2019 and participated in the Indian National Mathematical Olympiad 2020',
-    'Qualified Junior Mathematical Olympiad 2016 (Odisha region)',
+  const awards = [
+    'All India Rank 4000 among ~1,000,000 candidates in JEE Advanced 2021, India.',
+    'National Talent Search Scholarship — Top 2000 students of ~1,200,000 candidates in NTSE 2019, Government of India.',
+    'Qualified Regional Mathematical Olympiad (RMO) 2019; selected participant, Indian National Mathematical Olympiad (INMO) 2020.',
   ];
 
   const leadership = [
     {
       role: 'General Secretary',
-      organisation: 'Science and Technology Council, Students’ Gymkhana, IIT Bhubaneswar',
-      period: 'May 2023 – May 2024',
+      org: 'Science and Technology Council, Students’ Gymkhana, IIT Bhubaneswar',
+      period: 'May 2023 — May 2024',
       duties: [
         'Coordinated and managed five technical societies and two fests, ensuring proper allocation of funds among them.',
-        'Led IIT Bhubaneswar’s Inter IIT Tech Meet 2023 team, achieving an overall 10th rank among 23 IITs.',
+        'Led IIT Bhubaneswar’s Inter-IIT Tech Meet 2023 team, achieving an overall 10th rank among 23 IITs.',
       ],
     },
   ];
@@ -103,130 +119,184 @@ export default function CV() {
       <Head>
         <title>CV | Sambit Mishra</title>
       </Head>
-      <section className="space-y-8">
-        <h1 className="text-3xl font-bold">Curriculum Vitae</h1>
-        {/* Education Section */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">Education</h2>
-          {education.map((edu) => (
-            <div key={edu.degree} className="mb-4">
-              <h3 className="text-lg font-medium">{edu.degree}</h3>
-              <p className="text-sm text-gray-500">
-                {edu.institution} — {edu.period}
-              </p>
-              <ul className="list-disc list-inside text-gray-700">
-                {edu.details.map((d, idx) => (
-                  <li key={idx}>{d}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        {/* Experience Section */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">Experience</h2>
-          {experience.map((exp) => (
-            <div key={exp.title} className="mb-4">
-              <h3 className="text-lg font-medium">{exp.title}</h3>
-              <p className="text-sm text-gray-500">
-                {exp.organisation} — {exp.period}
-              </p>
-              <ul className="list-disc list-inside text-gray-700">
-                {exp.responsibilities.map((res, idx) => (
-                  <li key={idx}>{res}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        {/* Projects Section */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">Projects</h2>
-          {projects.map((proj) => (
-            <div key={proj.name} className="mb-4">
-              <h3 className="text-lg font-medium">{proj.name}</h3>
-              <p className="text-sm text-gray-500">
-                {proj.affiliation} — {proj.period}
-              </p>
-              <ul className="list-disc list-inside text-gray-700">
-                {proj.points.map((pt, idx) => (
-                  <li key={idx}>{pt}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        {/* Skills Section */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">Skills & Coursework</h2>
-          <div className="grid sm:grid-cols-3 gap-4">
-            <div>
-              <h3 className="text-lg font-medium mb-1">Technical Skills</h3>
-              <ul className="list-disc list-inside text-gray-700">
-                {skills.technical.map((skill) => (
-                  <li key={skill}>{skill}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium mb-1">Coursework</h3>
-              <ul className="list-disc list-inside text-gray-700">
-                {skills.coursework.map((cw) => (
-                  <li key={cw}>{cw}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium mb-1">Soft Skills</h3>
-              <ul className="list-disc list-inside text-gray-700">
-                {skills.soft.map((ss) => (
-                  <li key={ss}>{ss}</li>
-                ))}
-              </ul>
-            </div>
+
+      <section className="container-wide pt-12 sm:pt-20 pb-12">
+        <div className="grid lg:grid-cols-12 gap-10 items-end">
+          <div className="lg:col-span-8">
+            <p className="eyebrow mb-4 flex items-center gap-3">
+              <span className="inline-block w-6 h-px bg-ember" /> Curriculum Vitae
+            </p>
+            <h1 className="font-display text-5xl sm:text-6xl tracking-tightest text-ink leading-[0.95]">
+              Sambit Mishra
+            </h1>
+            <p className="mt-5 text-lg text-graphite max-w-2xl">
+              PhD Student, Electrical &amp; Computer Engineering · University of Southern California ·
+              Advised by Prof. Urbashi Mitra.
+            </p>
+          </div>
+          <div className="lg:col-span-4 flex lg:justify-end">
+            <a href="/Research_Resume.pdf" download className="btn-primary">
+              Download PDF
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+              </svg>
+            </a>
           </div>
         </div>
-        {/* Achievements Section */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">Scholastic Achievements</h2>
-          <ul className="list-disc list-inside text-gray-700">
-            {achievements.map((ach, idx) => (
-              <li key={idx}>{ach}</li>
-            ))}
-          </ul>
+      </section>
+
+      {/* RESEARCH FOCUS */}
+      <Section number="01" title="Research focus">
+        <p className="text-graphite leading-relaxed max-w-3xl">
+          Causal inference and probabilistic graphical models, with emphasis on scalable
+          continuous-optimization methods for causal discovery in high-dimensional data. Focused on
+          reliable structure learning under distribution shift, with applications to fraud detection
+          and decision systems.
+        </p>
+      </Section>
+
+      <Section number="02" title="Education">
+        <div className="space-y-10">
+          {education.map((e) => (
+            <Entry
+              key={e.degree}
+              title={e.degree}
+              meta={`${e.institution} · ${e.location}`}
+              right={e.period}
+              points={e.details}
+            />
+          ))}
         </div>
-        {/* Positions of Responsibility Section */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">Positions of Responsibility</h2>
-          {leadership.map((pos) => (
-            <div key={pos.role} className="mb-4">
-              <h3 className="text-lg font-medium">{pos.role}</h3>
-              <p className="text-sm text-gray-500">
-                {pos.organisation} — {pos.period}
-              </p>
-              <ul className="list-disc list-inside text-gray-700">
-                {pos.duties.map((duty, idx) => (
-                  <li key={idx}>{duty}</li>
-                ))}
+      </Section>
+
+      <Section number="03" title="Research experience">
+        <div className="space-y-10">
+          {research.map((r) => (
+            <Entry
+              key={r.title}
+              title={r.title}
+              meta={`${r.org} · ${r.location}`}
+              right={r.period}
+              points={r.points}
+            />
+          ))}
+        </div>
+      </Section>
+
+      <Section number="04" title="Publications">
+        <ol className="space-y-6">
+          {publications.map((p) => (
+            <li key={p.ref} className="grid sm:grid-cols-12 gap-4 pb-6 border-b border-rule last:border-0">
+              <div className="sm:col-span-1 font-mono text-xs text-ash">{p.ref}</div>
+              <div className="sm:col-span-11">
+                <p className="text-sm text-ash">{p.authors}</p>
+                <p className="font-display text-lg text-ink mt-1 leading-snug">&ldquo;{p.title}.&rdquo;</p>
+                <p className="text-sm text-graphite mt-1">
+                  <em className="not-italic">{p.venue}</em>, {p.year}.
+                </p>
+                {p.doi && (
+                  <a
+                    href={`https://doi.org/${p.doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 inline-block font-mono text-xs link-underline text-ember"
+                  >
+                    doi: {p.doi}
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section number="05" title="Industry experience">
+        <div className="space-y-10">
+          {industry.map((i) => (
+            <Entry
+              key={i.title}
+              title={i.title}
+              meta={`${i.org} · ${i.location}`}
+              right={i.period}
+              points={i.points}
+            />
+          ))}
+        </div>
+      </Section>
+
+      <Section number="06" title="Awards & academic distinctions">
+        <ul className="space-y-3">
+          {awards.map((a, i) => (
+            <li key={i} className="flex gap-4">
+              <span className="font-mono text-xs text-ash pt-1.5 shrink-0">★</span>
+              <span className="text-graphite">{a}</span>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section number="07" title="Technical skills">
+        <div className="grid sm:grid-cols-3 gap-8">
+          {Object.entries(skills).map(([cat, items]) => (
+            <div key={cat}>
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink mb-3">{cat}</p>
+              <ul className="flex flex-wrap gap-2">
+                {items.map((it) => <li key={it} className="tag">{it}</li>)}
               </ul>
             </div>
           ))}
         </div>
-        {/* Download link to PDF (optional) */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">Download</h2>
-          <p className="text-gray-700">
-            You can download a PDF version of my résumé for your records:
-            <a
-              href="/Research_Resume.pdf"
-              className="text-blue-600 hover:underline ml-2"
-              download
-            >
-              Research_Resume.pdf
-            </a>
-          </p>
+      </Section>
+
+      <Section number="08" title="Positions of responsibility">
+        <div className="space-y-10">
+          {leadership.map((l) => (
+            <Entry
+              key={l.role}
+              title={l.role}
+              meta={l.org}
+              right={l.period}
+              points={l.duties}
+            />
+          ))}
         </div>
-      </section>
+      </Section>
     </Layout>
+  );
+}
+
+function Section({ number, title, children }) {
+  return (
+    <section className="container-wide py-12 border-t border-rule">
+      <div className="grid lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-3">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ {number}</p>
+          <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">{title}</h2>
+        </div>
+        <div className="lg:col-span-9">{children}</div>
+      </div>
+    </section>
+  );
+}
+
+function Entry({ title, meta, right, points }) {
+  return (
+    <div>
+      <div className="flex flex-wrap justify-between gap-2 items-baseline">
+        <h3 className="font-display text-xl text-ink tracking-tightest">{title}</h3>
+        <span className="font-mono text-xs text-ash">{right}</span>
+      </div>
+      <p className="text-sm text-ash italic mt-1">{meta}</p>
+      {points && points.length > 0 && (
+        <ul className="mt-4 space-y-2">
+          {points.map((p, i) => (
+            <li key={i} className="flex gap-3 text-graphite">
+              <span className="text-ember mt-2 shrink-0">▹</span>
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
