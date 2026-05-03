@@ -121,27 +121,17 @@ export default function CV() {
       </Head>
 
       <section className="container-wide pt-12 sm:pt-20 pb-12">
-        <div className="grid lg:grid-cols-12 gap-10 items-end">
-          <div className="lg:col-span-8">
-            <p className="eyebrow mb-4 flex items-center gap-3">
-              <span className="inline-block w-6 h-px bg-ember" /> Curriculum Vitae
-            </p>
-            <h1 className="font-display text-5xl sm:text-6xl tracking-tightest text-ink leading-[0.95]">
-              Sambit Mishra
-            </h1>
-            <p className="mt-5 text-lg text-graphite max-w-2xl">
-              PhD Student, Electrical &amp; Computer Engineering · University of Southern California ·
-              Advised by Prof. Urbashi Mitra.
-            </p>
-          </div>
-          <div className="lg:col-span-4 flex lg:justify-end">
-            <a href="/Research_Resume.pdf" download className="btn-primary">
-              Download PDF
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
-              </svg>
-            </a>
-          </div>
+        <div>
+          <p className="eyebrow mb-4 flex items-center gap-3">
+            <span className="inline-block w-6 h-px bg-ember" /> Curriculum Vitae
+          </p>
+          <h1 className="font-display text-5xl sm:text-6xl tracking-tightest text-ink leading-[0.95]">
+            Sambit Mishra
+          </h1>
+          <p className="mt-5 text-lg text-graphite max-w-2xl">
+            PhD Student, Electrical &amp; Computer Engineering · University of Southern California ·
+            Advised by Prof. Urbashi Mitra.
+          </p>
         </div>
       </section>
 
