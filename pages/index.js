@@ -309,13 +309,9 @@ export default function Home() {
                   <span className="text-ash">Scholar</span>
                   <a href="https://scholar.google.com/citations?user=kyCSMKUAAAAJ" target="_blank" rel="noopener noreferrer" className="link-underline text-ink">Google Scholar</a>
                 </li>
-                <li className="flex justify-between gap-4 border-b border-rule pb-3">
+                <li className="flex justify-between gap-4">
                   <span className="text-ash">LinkedIn</span>
                   <a href="https://linkedin.com/in/thesambitmishra" target="_blank" rel="noopener noreferrer" className="link-underline text-ink">@thesambitmishra</a>
-                </li>
-                <li className="flex justify-between gap-4">
-                  <span className="text-ash">CV</span>
-                  <a href="/Research_Resume.pdf" download className="link-underline text-ink">Download PDF</a>
                 </li>
               </ul>
 
