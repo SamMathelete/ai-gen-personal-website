@@ -141,7 +141,7 @@ export default function Home() {
                 </em>{' '}and effect.
               </h1>
               <p className="mt-8 text-lg sm:text-xl text-graphite max-w-2xl leading-relaxed">
-                I&rsquo;m <span className="text-ink font-medium">Sambit Mishra</span>, a first-year PhD student in Electrical &amp; Computer
+                I&rsquo;m <span className="text-ink font-medium">Sambit Mishra</span>, a PhD student in Electrical &amp; Computer
                 Engineering at the University of Southern California, advised by{' '}
                 <a className="link-underline" href="https://viterbi.usc.edu/directory/faculty/Mitra/Urbashi" target="_blank" rel="noopener noreferrer">
                   Prof. Urbashi Mitra
