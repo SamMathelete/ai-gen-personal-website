@@ -11,7 +11,7 @@ export default function CV() {
       details: [
         'Advisor: Prof. Urbashi Mitra, Ming Hsieh Department of ECE',
         'GPA: 4.00/4.00',
-        'Coursework: Probability Theory (EE 503, A), Linear Algebra (EE 510, A), Supervised Machine Learning (EE 559, ongoing), Inference & Estimation Theory (EE 563, ongoing).',
+        'Key coursework: Probability Theory (EE 503, A), Linear Algebra (EE 510, A), Supervised Machine Learning (EE 559, A), Inference & Estimation Theory (EE 563, A).',
       ],
     },
     {
@@ -148,10 +148,11 @@ export default function CV() {
       {/* RESEARCH FOCUS */}
       <Section number="01" title="Research focus">
         <p className="text-graphite leading-relaxed max-w-3xl">
-          Causal inference and probabilistic graphical models, with emphasis on scalable
-          continuous-optimization methods for causal discovery in high-dimensional data. Focused on
-          reliable structure learning under distribution shift, with applications to fraud detection
-          and decision systems.
+          Causal inference and probabilistic graphical models, with emphasis on identifiability
+          theory, the design of efficient discovery algorithms for identifiable causal DAGs, and
+          analysis of bounds and lowest-variance discovery algorithms for non-identifiable or
+          partially-identifiable cases — with a focus on scalable continuous-optimization methods
+          for causal discovery in high-dimensional data and mixed-distribution datasets.
         </p>
       </Section>
 

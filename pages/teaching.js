@@ -142,8 +142,8 @@ export default function Teaching() {
               {[
                 { code: 'EE 503', name: 'Probability Theory', term: 'Fall 2025 · A' },
                 { code: 'EE 510', name: 'Linear Algebra', term: 'Fall 2025 · A' },
-                { code: 'EE 559', name: 'Supervised Machine Learning', term: 'Spring 2026' },
-                { code: 'EE 563', name: 'Inference & Estimation Theory', term: 'Spring 2026' },
+                { code: 'EE 559', name: 'Supervised Machine Learning', term: 'Spring 2026 · A' },
+                { code: 'EE 563', name: 'Inference & Estimation Theory', term: 'Spring 2026 · A' },
               ].map((c) => (
                 <li key={c.code} className="bg-paper p-6">
                   <p className="font-mono text-xs text-ember">{c.code}</p>
