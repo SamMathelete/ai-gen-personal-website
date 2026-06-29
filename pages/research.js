@@ -3,24 +3,24 @@ import Layout from '../components/Layout';
 
 const themes = [
   {
+    title: 'Identifiability theory',
+    body:
+      'Characterizing when causal structure can be uniquely recovered from observational and interventional data, and turning those identifiability conditions into efficient discovery algorithms for identifiable directed acyclic graphs.',
+  },
+  {
     title: 'Scalable causal discovery',
     body:
-      'Continuous-optimization formulations of structure learning that replace combinatorial search with differentiable acyclicity constraints, enabling GPU-accelerated batching across very high-dimensional graphs.',
+      'Continuous-optimization formulations of structure learning that replace combinatorial search over DAGs with differentiable acyclicity constraints, enabling GPU-accelerated estimation on high-dimensional, mixed-distribution data.',
+  },
+  {
+    title: 'Bounds under partial identifiability',
+    body:
+      'Variance bounds and lowest-variance estimators for the non- and partially-identifiable regimes — quantifying what can still be learned about causal structure when it is not uniquely determined.',
   },
   {
     title: 'Optimized soft interventions',
     body:
-      'Designing intervention selection policies that maximize identifiability gain per experiment — lowering the cost of causal discovery in regimes where interventions are expensive or risky.',
-  },
-  {
-    title: 'Identifiability',
-    body:
-      'Studying when and how causal graphs can be recovered from finite samples and under latent confounding, with variance bounds for the non- and partially-identifiable regimes — the conditions under which estimated structure can be trusted.',
-  },
-  {
-    title: 'RIS-assisted noncoherent communication',
-    body:
-      'Earlier work on SER-optimized multi-level ASK modulations and energy/sign-based receivers for reconfigurable intelligent surface (RIS)–assisted wireless systems, with closed-form error analysis.',
+      'Intervention-selection policies that maximize identifiability gain per experiment, reducing the number and cost of interventions needed to recover causal structure.',
   },
 ];
 
@@ -31,6 +31,8 @@ const publications = [
     status: 'Barcelona, pp. 6196–6200',
     title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
     authors: 'C. Peng, S. Mishra, U. Mitra',
+    doi: '10.1109/ICASSP55912.2026.11460954',
+    url: 'https://ieeexplore.ieee.org/document/11460954/',
     note: 'Proposes a learning-based framework for selecting soft interventions that improves causal-discovery efficiency and reduces experimental cost.',
   },
   {
@@ -40,6 +42,7 @@ const publications = [
     title: 'SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception',
     authors: 'S. Mishra, S. P. Dash, G. C. Alexandropoulos',
     doi: '10.1109/TGCN.2025.3633182',
+    url: 'https://ieeexplore.ieee.org/document/11247934/',
     note: 'Investigates one- and two-sided ASK modulations in noncoherent SISO systems assisted by an RIS, proposing novel energy- and sign-based receiver structures.',
   },
   {
@@ -49,6 +52,7 @@ const publications = [
     title: 'Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System',
     authors: 'S. Mishra, S. P. Dash',
     doi: '10.1109/LWC.2025.3624154',
+    url: 'https://ieeexplore.ieee.org/document/11214252/',
     note: 'Considers RIS-aided wireless communication with one-sided ASK and an optimal noncoherent maximum-likelihood detection rule.',
   },
 ];
@@ -132,7 +136,15 @@ export default function Research() {
                     <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ember mt-1">{p.status}</p>
                   </div>
                   <div className="sm:col-span-8">
-                    <h3 className="font-display text-xl sm:text-2xl text-ink leading-snug tracking-tightest">{p.title}</h3>
+                    <h3 className="font-display text-xl sm:text-2xl leading-snug tracking-tightest">
+                      {p.url ? (
+                        <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-ember transition-colors">
+                          {p.title}
+                        </a>
+                      ) : (
+                        <span className="text-ink">{p.title}</span>
+                      )}
+                    </h3>
                     <p className="mt-2 text-sm text-ash">{p.authors}</p>
                     <p className="mt-3 text-graphite text-sm leading-relaxed">{p.note}</p>
                     {p.doi && (

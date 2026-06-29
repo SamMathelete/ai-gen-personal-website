@@ -58,6 +58,8 @@ export default function CV() {
       title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
       venue: 'Proc. IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP), Barcelona, Spain',
       year: '2026, pp. 6196–6200',
+      doi: '10.1109/ICASSP55912.2026.11460954',
+      url: 'https://ieeexplore.ieee.org/document/11460954/',
     },
     {
       ref: '[2]',
@@ -66,6 +68,7 @@ export default function CV() {
       venue: 'IEEE Transactions on Green Communications and Networking, vol. 10, pp. 1433–1445',
       year: '2026',
       doi: '10.1109/TGCN.2025.3633182',
+      url: 'https://ieeexplore.ieee.org/document/11247934/',
     },
     {
       ref: '[3]',
@@ -74,6 +77,7 @@ export default function CV() {
       venue: 'IEEE Wireless Communications Letters, vol. 15, pp. 300–304',
       year: '2026',
       doi: '10.1109/LWC.2025.3624154',
+      url: 'https://ieeexplore.ieee.org/document/11214252/',
     },
   ];
 
@@ -190,7 +194,17 @@ export default function CV() {
               <div className="sm:col-span-1 font-mono text-xs text-ash">{p.ref}</div>
               <div className="sm:col-span-11">
                 <p className="text-sm text-ash">{p.authors}</p>
-                <p className="font-display text-lg text-ink mt-1 leading-snug">&ldquo;{p.title}.&rdquo;</p>
+                <p className="font-display text-lg mt-1 leading-snug">
+                  &ldquo;
+                  {p.url ? (
+                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-ember transition-colors">
+                      {p.title}
+                    </a>
+                  ) : (
+                    <span className="text-ink">{p.title}</span>
+                  )}
+                  .&rdquo;
+                </p>
                 <p className="text-sm text-graphite mt-1">
                   <em className="not-italic">{p.venue}</em>, {p.year}.
                 </p>

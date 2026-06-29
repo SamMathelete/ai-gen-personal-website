@@ -8,6 +8,8 @@ const featured = [
     status: 'Barcelona, Spain',
     title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
     authors: 'C. Peng, S. Mishra, U. Mitra',
+    doi: '10.1109/ICASSP55912.2026.11460954',
+    url: 'https://ieeexplore.ieee.org/document/11460954/',
   },
   {
     venue: 'IEEE TGCN, vol. 10',
@@ -15,6 +17,7 @@ const featured = [
     title: 'SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception',
     authors: 'S. Mishra, S. P. Dash, G. C. Alexandropoulos',
     doi: '10.1109/TGCN.2025.3633182',
+    url: 'https://ieeexplore.ieee.org/document/11247934/',
   },
   {
     venue: 'IEEE WCL, vol. 15',
@@ -22,6 +25,7 @@ const featured = [
     title: 'Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System',
     authors: 'S. Mishra, S. P. Dash',
     doi: '10.1109/LWC.2025.3624154',
+    url: 'https://ieeexplore.ieee.org/document/11214252/',
   },
 ];
 
@@ -226,8 +230,14 @@ export default function Home() {
                     <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ember mt-1">{p.status}</p>
                   </div>
                   <div className="sm:col-span-8">
-                    <h3 className="font-display text-xl sm:text-2xl tracking-tightest text-ink leading-snug group-hover:text-ember transition-colors">
-                      {p.title}
+                    <h3 className="font-display text-xl sm:text-2xl tracking-tightest leading-snug">
+                      {p.url ? (
+                        <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-ember group-hover:text-ember transition-colors">
+                          {p.title}
+                        </a>
+                      ) : (
+                        <span className="text-ink">{p.title}</span>
+                      )}
                     </h3>
                     <p className="mt-2 text-sm text-ash">{p.authors}</p>
                     {p.doi && (
