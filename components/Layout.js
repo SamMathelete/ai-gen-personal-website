@@ -123,6 +123,7 @@ export default function Layout({ children }) {
               <ul className="space-y-1.5 text-sm">
                 <li><a className="link-underline" href="mailto:sambitmi@usc.edu">sambitmi@usc.edu</a></li>
                 <li><a className="link-underline" href="https://scholar.google.com/citations?user=kyCSMKUAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+                <li><a className="link-underline" href="https://orcid.org/0000-0002-7736-7164" target="_blank" rel="noopener noreferrer">ORCID</a></li>
                 <li><a className="link-underline" href="https://linkedin.com/in/thesambitmishra" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               </ul>
             </div>

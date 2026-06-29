@@ -13,9 +13,9 @@ const themes = [
       'Designing intervention selection policies that maximize identifiability gain per experiment — lowering the cost of causal discovery in regimes where interventions are expensive or risky.',
   },
   {
-    title: 'Identifiability under shift',
+    title: 'Identifiability',
     body:
-      'Studying when and how causal graphs can be recovered with finite samples, latent confounders, and distribution shift between training and deployment — the conditions under which structure can be trusted.',
+      'Studying when and how causal graphs can be recovered from finite samples and under latent confounding, with variance bounds for the non- and partially-identifiable regimes — the conditions under which estimated structure can be trusted.',
   },
   {
     title: 'RIS-assisted noncoherent communication',
@@ -82,9 +82,8 @@ export default function Research() {
         </h1>
         <p className="mt-6 text-lg text-graphite max-w-3xl leading-relaxed">
           My research lives at the intersection of causal inference, probabilistic graphical models,
-          and continuous optimization. The unifying question: how do we recover causal graphs that
-          remain trustworthy when data are scarce, partially observed, or drawn from a different
-          distribution than the one we&rsquo;ll deploy on?
+          and continuous optimization. The unifying question: when can causal structure be recovered
+          from data — efficiently, and with guarantees — and when can it not?
         </p>
       </section>
 
