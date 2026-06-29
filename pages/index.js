@@ -5,9 +5,11 @@ import Layout from '../components/Layout';
 const featured = [
   {
     venue: 'ICASSP 2026',
-    status: 'Accepted',
+    status: 'Barcelona, Spain',
     title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
     authors: 'C. Peng, S. Mishra, U. Mitra',
+    doi: '10.1109/ICASSP55912.2026.11460954',
+    url: 'https://ieeexplore.ieee.org/document/11460954/',
   },
   {
     venue: 'IEEE TGCN, vol. 10',
@@ -15,6 +17,7 @@ const featured = [
     title: 'SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception',
     authors: 'S. Mishra, S. P. Dash, G. C. Alexandropoulos',
     doi: '10.1109/TGCN.2025.3633182',
+    url: 'https://ieeexplore.ieee.org/document/11247934/',
   },
   {
     venue: 'IEEE WCL, vol. 15',
@@ -22,21 +25,22 @@ const featured = [
     title: 'Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System',
     authors: 'S. Mishra, S. P. Dash',
     doi: '10.1109/LWC.2025.3624154',
+    url: 'https://ieeexplore.ieee.org/document/11214252/',
   },
 ];
 
 const focus = [
   {
     label: 'Causal discovery',
-    body: 'Continuous-optimization methods for scalable DAG estimation with differentiable acyclicity constraints.',
+    body: 'Continuous-optimization formulations of structure learning that replace combinatorial search over DAGs with differentiable acyclicity constraints, enabling GPU-accelerated estimation at scale.',
   },
   {
-    label: 'Intervention design',
-    body: 'Soft-intervention selection frameworks that lower experimental cost while preserving identifiability.',
+    label: 'Optimized interventions',
+    body: 'Soft-intervention selection that maximizes identifiability gain per experiment, reducing the number of interventions needed to recover causal structure.',
   },
   {
     label: 'Identifiability',
-    body: 'Finite-sample and latent-variable regimes — what can structure tell us, and when does it fail?',
+    body: 'Conditions under which causal structure is recoverable from finite samples and latent variables, with variance bounds for the non- and partially-identifiable regimes.',
   },
 ];
 
@@ -47,7 +51,7 @@ function DagFigure() {
       viewBox="0 0 360 360"
       className="w-full h-full"
       role="img"
-      aria-label="Animated directed acyclic graph illustrating causal structure"
+      aria-label="Directed acyclic graph illustrating causal structure"
     >
       <defs>
         <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -122,43 +126,42 @@ export default function Home() {
       </Head>
 
       {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="container-wide pt-12 sm:pt-20 pb-16 sm:pb-28">
+      <section className="border-b border-rule">
+        <div className="container-wide pt-12 sm:pt-20 pb-16 sm:pb-24">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-7 animate-fade-up">
               <p className="eyebrow mb-6 flex items-center gap-3">
                 <span className="inline-block w-6 h-px bg-ember" />
-                PhD Student · USC Viterbi
+                Ming Hsieh Department of ECE · University of Southern California
               </p>
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tightest text-ink">
-                Learning the structure
-                <br />
-                of <em className="text-ember not-italic relative">
-                  cause
-                  <svg className="absolute -bottom-1 left-0 w-full" height="10" viewBox="0 0 200 10" preserveAspectRatio="none">
-                    <path d="M0,6 Q50,1 100,6 T200,6" stroke="#C2410C" strokeWidth="2" fill="none" />
-                  </svg>
-                </em>{' '}and effect.
+                Sambit Mishra
               </h1>
-              <p className="mt-8 text-lg sm:text-xl text-graphite max-w-2xl leading-relaxed">
-                I&rsquo;m <span className="text-ink font-medium">Sambit Mishra</span>, a PhD student in Electrical &amp; Computer
-                Engineering at the University of Southern California, advised by{' '}
+              <p className="mt-5 text-lg sm:text-xl text-graphite max-w-2xl leading-relaxed">
+                PhD student in Electrical &amp; Computer Engineering, advised by{' '}
                 <a className="link-underline" href="https://viterbi.usc.edu/directory/faculty/Mitra/Urbashi" target="_blank" rel="noopener noreferrer">
                   Prof. Urbashi Mitra
-                </a>. My work centers on <span className="text-ink">causal inference</span> and
-                {' '}<span className="text-ink">probabilistic graphical models</span> — particularly scalable continuous-optimization
-                methods for causal discovery in high-dimensional, distribution-shifted data.
+                </a>.
+              </p>
+              <p className="mt-5 text-base sm:text-lg text-graphite max-w-2xl leading-relaxed">
+                I work on <span className="text-ink">causal inference</span> and{' '}
+                <span className="text-ink">probabilistic graphical models</span>. My research develops
+                identifiability theory and scalable continuous-optimization methods for causal
+                discovery: characterizing when causal structure can be recovered from data, designing
+                efficient algorithms for identifiable directed acyclic graphs, and establishing
+                variance bounds for the non- and partially-identifiable cases that arise with
+                high-dimensional, mixed-distribution data.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-3">
                 <Link href="/research" legacyBehavior>
                   <a className="btn-primary">
-                    Read the research
+                    View research
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                   </a>
                 </Link>
                 <Link href="/cv" legacyBehavior><a className="btn-ghost">Curriculum Vitae</a></Link>
-                <a href="mailto:sambitmi@usc.edu" className="btn-ghost">sambitmi@usc.edu</a>
+                <a href="https://scholar.google.com/citations?user=kyCSMKUAAAAJ" target="_blank" rel="noopener noreferrer" className="btn-ghost">Google Scholar</a>
               </div>
             </div>
 
@@ -174,35 +177,20 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* Marquee strip */}
-        <div className="border-y border-rule bg-cream/60 overflow-hidden">
-          <div className="flex animate-marquee whitespace-nowrap py-4 font-mono text-xs uppercase tracking-[0.25em] text-ash">
-            {Array.from({ length: 2 }).map((_, repeat) => (
-              <div key={repeat} className="flex items-center gap-10 px-5 shrink-0">
-                <span>Causal Discovery</span><span className="text-ember">◆</span>
-                <span>Probabilistic Graphical Models</span><span className="text-ember">◆</span>
-                <span>Continuous Optimization</span><span className="text-ember">◆</span>
-                <span>Distribution Shift</span><span className="text-ember">◆</span>
-                <span>Soft Interventions</span><span className="text-ember">◆</span>
-                <span>Structure Learning</span><span className="text-ember">◆</span>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
-      {/* CURRENT FOCUS */}
+      {/* RESEARCH INTERESTS */}
       <section className="container-wide py-20">
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-4">
-            <p className="eyebrow mb-4">§ 01 — Currently</p>
+            <p className="eyebrow mb-4">§ 01 — Research</p>
             <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-ink">
-              Three threads I&rsquo;m pulling on.
+              Research interests
             </h2>
             <p className="mt-4 text-graphite leading-relaxed">
-              Reliable structure learning under distribution shift, with applications to
-              fraud detection and high-stakes decision systems.
+              Recovering causal structure that is both correct and computable — when it can be
+              identified, how to estimate it efficiently, and how much uncertainty remains when it
+              cannot.
             </p>
           </div>
           <div className="lg:col-span-8">
@@ -219,13 +207,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED PUBLICATIONS */}
+      {/* SELECTED PUBLICATIONS */}
       <section className="bg-cream border-y border-rule">
         <div className="container-wide py-20">
           <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
             <div>
-              <p className="eyebrow mb-4">§ 02 — Selected publications</p>
-              <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-ink">Recent work.</h2>
+              <p className="eyebrow mb-4">§ 02 — Publications</p>
+              <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-ink">Selected publications</h2>
             </div>
             <Link href="/research" legacyBehavior>
               <a className="link-underline text-sm font-medium">View all research →</a>
@@ -242,8 +230,14 @@ export default function Home() {
                     <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ember mt-1">{p.status}</p>
                   </div>
                   <div className="sm:col-span-8">
-                    <h3 className="font-display text-xl sm:text-2xl tracking-tightest text-ink leading-snug group-hover:text-ember transition-colors">
-                      {p.title}
+                    <h3 className="font-display text-xl sm:text-2xl tracking-tightest leading-snug">
+                      {p.url ? (
+                        <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-ember group-hover:text-ember transition-colors">
+                          {p.title}
+                        </a>
+                      ) : (
+                        <span className="text-ink">{p.title}</span>
+                      )}
                     </h3>
                     <p className="mt-2 text-sm text-ash">{p.authors}</p>
                     {p.doi && (
@@ -264,31 +258,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT + CONTACT */}
+      {/* BACKGROUND + CONTACT */}
       <section className="container-wide py-20">
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-7">
             <p className="eyebrow mb-4">§ 03 — Background</p>
             <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-ink mb-6">
-              From wireless systems to causal graphs.
+              Background
             </h2>
             <div className="space-y-5 text-graphite leading-relaxed">
               <p>
                 Before USC, I studied Electronics &amp; Communication Engineering at IIT Bhubaneswar,
-                graduating with a B.Tech (Hons.) in 2025 and a 9.14/10.00 GPA. There I worked with
+                graduating with a B.Tech (Hons.) in 2025 (9.14/10.00 GPA). There I worked with
                 Dr. Soumya P. Dash on SER-optimized modulation schemes for RIS-assisted noncoherent
-                wireless systems — work that has since appeared in IEEE TGCN and IEEE WCL.
+                wireless systems, published in IEEE TGCN and IEEE WCL.
               </p>
               <p>
-                I spent the summer of 2024 as an ASIC Engineering Intern at NVIDIA, verifying CHI
-                protocol compliance on the CHI-VIP team. Outside of research I served as
-                {' '}<span className="text-ink font-medium">General Secretary of the Science &amp; Technology Council</span> at IIT Bhubaneswar,
-                where I led the Inter-IIT Tech Meet team to a top-ten finish among 23 IITs.
+                In the summer of 2024 I was an ASIC Engineering Intern at NVIDIA, verifying CHI
+                protocol compliance on the CHI-VIP team. I also served as General Secretary of the
+                Science &amp; Technology Council at IIT Bhubaneswar, leading the institute&rsquo;s
+                Inter-IIT Tech Meet contingent to a top-ten finish among 23 IITs.
               </p>
               <p>
-                These days, I&rsquo;m drawn to questions at the intersection of optimization theory and
-                inference: when can we recover causal structure cheaply, and what does it take to
-                trust the answer?
+                My current work sits at the intersection of optimization and inference: when causal
+                structure can be recovered efficiently, and what guarantees can be placed on the
+                result.
               </p>
             </div>
           </div>
@@ -310,6 +304,10 @@ export default function Home() {
                   <a href="https://scholar.google.com/citations?user=kyCSMKUAAAAJ" target="_blank" rel="noopener noreferrer" className="link-underline text-ink">Google Scholar</a>
                 </li>
                 <li className="flex justify-between gap-4 border-b border-rule pb-3">
+                  <span className="text-ash">ORCID</span>
+                  <a href="https://orcid.org/0000-0002-7736-7164" target="_blank" rel="noopener noreferrer" className="link-underline text-ink">0000-0002-7736-7164</a>
+                </li>
+                <li className="flex justify-between gap-4 border-b border-rule pb-3">
                   <span className="text-ash">LinkedIn</span>
                   <a href="https://linkedin.com/in/thesambitmishra" target="_blank" rel="noopener noreferrer" className="link-underline text-ink">@thesambitmishra</a>
                 </li>
@@ -321,11 +319,11 @@ export default function Home() {
 
               <div className="mt-8 pt-6 border-t border-rule">
                 <p className="text-sm text-graphite">
-                  Open to research collaborations on causal discovery, identifiability,
-                  and structure learning under distribution shift.
+                  Open to research collaborations on causal discovery, identifiability, and scalable
+                  structure learning.
                 </p>
                 <a href="mailto:sambitmi@usc.edu" className="mt-4 btn-primary w-full justify-center">
-                  Say hello
+                  Get in touch
                 </a>
               </div>
             </div>

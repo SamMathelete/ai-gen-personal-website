@@ -11,7 +11,7 @@ export default function CV() {
       details: [
         'Advisor: Prof. Urbashi Mitra, Ming Hsieh Department of ECE',
         'GPA: 4.00/4.00',
-        'Key coursework: Probability Theory (EE 503, A), Linear Algebra (EE 510, A), Supervised Machine Learning (EE 559, A), Inference & Estimation Theory (EE 563, A).',
+        'Key coursework: Probability Theory, Linear Algebra, Supervised Machine Learning, Inference & Estimation Theory.',
       ],
     },
     {
@@ -56,8 +56,10 @@ export default function CV() {
       ref: '[1]',
       authors: 'C. Peng, S. Mishra, U. Mitra',
       title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
-      venue: 'IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP)',
-      year: 'accepted, 2026',
+      venue: 'Proc. IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP), Barcelona, Spain',
+      year: '2026, pp. 6196–6200',
+      doi: '10.1109/ICASSP55912.2026.11460954',
+      url: 'https://ieeexplore.ieee.org/document/11460954/',
     },
     {
       ref: '[2]',
@@ -66,6 +68,7 @@ export default function CV() {
       venue: 'IEEE Transactions on Green Communications and Networking, vol. 10, pp. 1433–1445',
       year: '2026',
       doi: '10.1109/TGCN.2025.3633182',
+      url: 'https://ieeexplore.ieee.org/document/11247934/',
     },
     {
       ref: '[3]',
@@ -74,6 +77,7 @@ export default function CV() {
       venue: 'IEEE Wireless Communications Letters, vol. 15, pp. 300–304',
       year: '2026',
       doi: '10.1109/LWC.2025.3624154',
+      url: 'https://ieeexplore.ieee.org/document/11214252/',
     },
   ];
 
@@ -97,9 +101,9 @@ export default function CV() {
   };
 
   const awards = [
+    'B.Tech. Project Proficiency Award — Best B.Tech Thesis, ECE Department, IIT Bhubaneswar (2024–25).',
     'All India Rank 4000 among ~1,000,000 candidates in JEE Advanced 2021, India.',
     'National Talent Search Scholarship — Top 2000 students of ~1,200,000 candidates in NTSE 2019, Government of India.',
-    'Qualified Regional Mathematical Olympiad (RMO) 2019; selected participant, Indian National Mathematical Olympiad (INMO) 2020.',
   ];
 
   const leadership = [
@@ -145,14 +149,13 @@ export default function CV() {
         </div>
       </section>
 
-      {/* RESEARCH FOCUS */}
-      <Section number="01" title="Research focus">
+      {/* RESEARCH INTERESTS */}
+      <Section number="01" title="Research interests">
         <p className="text-graphite leading-relaxed max-w-3xl">
           Causal inference and probabilistic graphical models, with emphasis on identifiability
-          theory, the design of efficient discovery algorithms for identifiable causal DAGs, and
-          analysis of bounds and lowest-variance discovery algorithms for non-identifiable or
-          partially-identifiable cases — with a focus on scalable continuous-optimization methods
-          for causal discovery in high-dimensional data and mixed-distribution datasets.
+          theory and scalable continuous-optimization methods for causal discovery. Interested in
+          efficient discovery algorithms for identifiable DAGs, variance bounds for
+          non-/partially-identifiable cases, and high-dimensional, mixed-distribution data.
         </p>
       </Section>
 
@@ -191,7 +194,17 @@ export default function CV() {
               <div className="sm:col-span-1 font-mono text-xs text-ash">{p.ref}</div>
               <div className="sm:col-span-11">
                 <p className="text-sm text-ash">{p.authors}</p>
-                <p className="font-display text-lg text-ink mt-1 leading-snug">&ldquo;{p.title}.&rdquo;</p>
+                <p className="font-display text-lg mt-1 leading-snug">
+                  &ldquo;
+                  {p.url ? (
+                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-ember transition-colors">
+                      {p.title}
+                    </a>
+                  ) : (
+                    <span className="text-ink">{p.title}</span>
+                  )}
+                  .&rdquo;
+                </p>
                 <p className="text-sm text-graphite mt-1">
                   <em className="not-italic">{p.venue}</em>, {p.year}.
                 </p>
