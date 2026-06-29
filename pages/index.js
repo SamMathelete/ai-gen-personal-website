@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 const featured = [
   {
     venue: 'ICASSP 2026',
-    status: 'Accepted',
+    status: 'Barcelona, Spain',
     title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
     authors: 'C. Peng, S. Mishra, U. Mitra',
   },
@@ -146,8 +146,8 @@ export default function Home() {
                 <a className="link-underline" href="https://viterbi.usc.edu/directory/faculty/Mitra/Urbashi" target="_blank" rel="noopener noreferrer">
                   Prof. Urbashi Mitra
                 </a>. My work centers on <span className="text-ink">causal inference</span> and
-                {' '}<span className="text-ink">probabilistic graphical models</span> — particularly scalable continuous-optimization
-                methods for causal discovery in high-dimensional, distribution-shifted data.
+                {' '}<span className="text-ink">probabilistic graphical models</span> — particularly identifiability theory and
+                scalable continuous-optimization methods for causal discovery in high-dimensional, mixed-distribution data.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-3">
@@ -201,8 +201,9 @@ export default function Home() {
               Three threads I&rsquo;m pulling on.
             </h2>
             <p className="mt-4 text-graphite leading-relaxed">
-              Reliable structure learning under distribution shift, with applications to
-              fraud detection and high-stakes decision systems.
+              Identifiability theory and scalable continuous-optimization methods for causal
+              discovery — efficient algorithms for identifiable DAGs, and variance bounds when
+              structure is only partially identifiable.
             </p>
           </div>
           <div className="lg:col-span-8">

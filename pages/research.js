@@ -28,7 +28,7 @@ const publications = [
   {
     n: '01',
     venue: 'ICASSP 2026',
-    status: 'Accepted',
+    status: 'Barcelona, pp. 6196–6200',
     title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
     authors: 'C. Peng, S. Mishra, U. Mitra',
     note: 'Proposes a learning-based framework for selecting soft interventions that improves causal-discovery efficiency and reduces experimental cost.',
