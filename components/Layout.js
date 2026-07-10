@@ -2,6 +2,48 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
+function ThemeToggle({ className = '' }) {
+  const [theme, setTheme] = useState('light');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+  }, []);
+
+  const toggle = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.classList.toggle('dark', next === 'dark');
+    try {
+      localStorage.setItem('theme', next);
+    } catch (e) {
+      /* ignore storage errors (private mode, etc.) */
+    }
+  };
+
+  return (
+    <button
+      onClick={toggle}
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      className={`inline-flex items-center justify-center w-9 h-9 rounded-full border border-ink/15 text-ash hover:text-ember hover:border-ember/40 transition-colors ${className}`}
+    >
+      {/* Render a stable icon until mounted to avoid hydration mismatch */}
+      {mounted && theme === 'dark' ? (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="4.5" />
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+        </svg>
+      ) : (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+        </svg>
+      )}
+    </button>
+  );
+}
+
 export default function Layout({ children }) {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,6 +99,7 @@ export default function Layout({ children }) {
                 </a>
               </Link>
             ))}
+            <ThemeToggle className="ml-2" />
             <a
               href="mailto:sambitmi@usc.edu"
               className="ml-3 btn-primary text-xs"
@@ -65,8 +108,10 @@ export default function Layout({ children }) {
             </a>
           </nav>
 
-          <button
-            className="md:hidden text-ink p-2 -mr-2"
+          <div className="md:hidden flex items-center gap-1">
+            <ThemeToggle />
+            <button
+            className="text-ink p-2 -mr-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle navigation menu"
           >
@@ -77,7 +122,8 @@ export default function Layout({ children }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7h16M4 12h16M4 17h16" />
               )}
             </svg>
-          </button>
+            </button>
+          </div>
         </div>
 
         {menuOpen && (

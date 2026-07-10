@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -7,14 +8,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        paper: '#F7F4EC',
-        cream: '#FAF7F0',
-        ink: '#11100E',
-        graphite: '#2A2823',
-        ash: '#5C584F',
-        rule: '#E2DCCC',
-        ember: '#C2410C',
-        emberSoft: '#F59E0B',
+        // Colors are driven by CSS variables (see styles/globals.css) so the
+        // entire palette can flip between light and dark. Channels are stored
+        // as space-separated RGB values to preserve Tailwind's opacity modifiers
+        // (e.g. bg-ink/10, text-paper/75).
+        paper: 'rgb(var(--color-paper) / <alpha-value>)',
+        cream: 'rgb(var(--color-cream) / <alpha-value>)',
+        ink: 'rgb(var(--color-ink) / <alpha-value>)',
+        graphite: 'rgb(var(--color-graphite) / <alpha-value>)',
+        ash: 'rgb(var(--color-ash) / <alpha-value>)',
+        rule: 'rgb(var(--color-rule) / <alpha-value>)',
+        ember: 'rgb(var(--color-ember) / <alpha-value>)',
+        emberSoft: 'rgb(var(--color-emberSoft) / <alpha-value>)',
+        accent: 'rgb(var(--color-accent) / <alpha-value>)',
       },
       fontFamily: {
         display: ['"Fraunces"', 'Georgia', 'serif'],
