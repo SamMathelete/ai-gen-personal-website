@@ -191,17 +191,18 @@ export default function Research() {
 
       {/* CTA */}
       <section className="container-wide pb-20">
-        <div className="card border-transparent bg-ember text-paper text-center py-14">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-paper/70 mb-4">Collaborate</p>
-          <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-paper">
+        <div className="rounded-2xl border border-ember/20 bg-ember/[0.05] text-center py-14 px-6">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-ember mb-4">Collaborate</p>
+          <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-ink">
             Working on a related question?
           </h2>
-          <p className="mt-3 text-paper/80 max-w-xl mx-auto">
+          <p className="mt-3 text-graphite max-w-xl mx-auto">
             I&rsquo;m always glad to chat about causal discovery, identifiability, or scalable
             structure-learning methods.
           </p>
-          <a href="mailto:sambitmi@usc.edu" className="mt-7 inline-flex items-center gap-2 bg-paper text-ember px-5 py-2.5 rounded-full text-sm font-semibold no-underline hover:opacity-90 transition-opacity">
+          <a href="mailto:sambitmi@usc.edu" className="mt-7 btn-primary">
             sambitmi@usc.edu
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
           </a>
         </div>
       </section>
