@@ -55,15 +55,15 @@ function DagFigure() {
     >
       <defs>
         <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="#11100E" />
+          <path d="M 0 0 L 10 5 L 0 10 z" style={{ fill: 'rgb(var(--color-ink))' }} />
         </marker>
         <marker id="arrowEmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="#C2410C" />
+          <path d="M 0 0 L 10 5 L 0 10 z" style={{ fill: 'rgb(var(--color-ember))' }} />
         </marker>
         <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#C2410C" stopOpacity="0.25" />
-          <stop offset="60%" stopColor="#C2410C" stopOpacity="0.05" />
-          <stop offset="100%" stopColor="#C2410C" stopOpacity="0" />
+          <stop offset="0%" style={{ stopColor: 'rgb(var(--color-ember))' }} stopOpacity="0.25" />
+          <stop offset="60%" style={{ stopColor: 'rgb(var(--color-ember))' }} stopOpacity="0.05" />
+          <stop offset="100%" style={{ stopColor: 'rgb(var(--color-ember))' }} stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -71,7 +71,7 @@ function DagFigure() {
       <circle cx="180" cy="180" r="140" fill="url(#halo)" />
 
       {/* Edges (DAG, no cycles) */}
-      <g fill="none" stroke="#11100E" strokeWidth="1.5" markerEnd="url(#arrow)">
+      <g fill="none" style={{ stroke: 'rgb(var(--color-ink))' }} strokeWidth="1.5" markerEnd="url(#arrow)">
         <path className="edge e1" d="M 70 70 L 165 165" />
         <path className="edge e2" d="M 290 70 L 195 165" />
         <path className="edge e3" d="M 70 70 L 70 280" />
@@ -79,7 +79,7 @@ function DagFigure() {
         <path className="edge e6" d="M 180 195 L 80 275" />
         <path className="edge e7" d="M 180 195 L 280 275" />
       </g>
-      <g fill="none" stroke="#C2410C" strokeWidth="1.8" markerEnd="url(#arrowEmber)">
+      <g fill="none" style={{ stroke: 'rgb(var(--color-ember))' }} strokeWidth="1.8" markerEnd="url(#arrowEmber)">
         <path className="edge e5" d="M 180 195 L 180 285" />
       </g>
 
@@ -97,12 +97,15 @@ function DagFigure() {
 }
 
 function Node({ x, y, label, central = false, emphasized = false, delay }) {
-  const fill = emphasized ? '#C2410C' : central ? '#11100E' : '#FAF7F0';
-  const stroke = emphasized ? '#C2410C' : '#11100E';
-  const textFill = central || emphasized ? '#FAF7F0' : '#11100E';
+  const emberVar = 'rgb(var(--color-ember))';
+  const inkVar = 'rgb(var(--color-ink))';
+  const creamVar = 'rgb(var(--color-cream))';
+  const fill = emphasized ? emberVar : central ? inkVar : creamVar;
+  const stroke = emphasized ? emberVar : inkVar;
+  const textFill = central || emphasized ? creamVar : inkVar;
   return (
     <g style={{ animation: 'fadeUp 0.6s ease-out both', animationDelay: delay }}>
-      <circle cx={x} cy={y} r={central ? 18 : 15} fill={fill} stroke={stroke} strokeWidth="1.5" />
+      <circle cx={x} cy={y} r={central ? 18 : 15} style={{ fill, stroke }} strokeWidth="1.5" />
       <text
         x={x}
         y={y + 4}
@@ -110,7 +113,7 @@ function Node({ x, y, label, central = false, emphasized = false, delay }) {
         fontFamily="JetBrains Mono, ui-monospace, monospace"
         fontSize="11"
         fontWeight="500"
-        fill={textFill}
+        style={{ fill: textFill }}
       >
         {label}
       </text>

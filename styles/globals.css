@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Crimson palette — driven entirely by CSS variables so the whole site can
+  switch between light and dark themes. Values are space-separated RGB channels
+  so Tailwind's `<alpha-value>` opacity modifiers keep working.
+*/
+:root {
+  --color-paper: 250 246 245;      /* warm near-white, faint rose */
+  --color-cream: 244 235 233;      /* elevated warm surface */
+  --color-ink: 26 15 17;           /* near-black, warm foreground */
+  --color-graphite: 61 40 43;      /* body text */
+  --color-ash: 135 104 108;        /* muted mauve */
+  --color-rule: 232 216 214;       /* hairline borders */
+  --color-ember: 200 30 58;        /* crimson — primary accent */
+  --color-emberSoft: 225 78 104;   /* lighter crimson-rose */
+  --color-accent: 15 118 110;      /* teal — complementary accent */
+
+  --grain-bg: 250 246 245;
+  --grain-matrix: 0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.05 0 0 0 0.04 0;
+  color-scheme: light;
+}
+
+.dark {
+  --color-paper: 20 16 16;         /* deep warm charcoal */
+  --color-cream: 31 24 24;         /* elevated dark surface */
+  --color-ink: 242 231 230;        /* near-white, warm foreground */
+  --color-graphite: 208 190 192;   /* body text */
+  --color-ash: 158 130 134;        /* muted mauve */
+  --color-rule: 58 44 46;          /* hairline borders */
+  --color-ember: 240 78 104;       /* bright crimson — primary accent */
+  --color-emberSoft: 120 26 42;    /* deep crimson-rose */
+  --color-accent: 45 212 191;      /* bright teal — complementary accent */
+
+  --grain-bg: 20 16 16;
+  --grain-matrix: 0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0.9 0 0 0 0.05 0;
+  color-scheme: dark;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -9,10 +46,11 @@
   body {
     @apply bg-paper text-ink font-sans antialiased;
     font-feature-settings: "ss01", "cv11";
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   ::selection {
-    background-color: #11100E;
-    color: #F7F4EC;
+    background-color: rgb(var(--color-ember));
+    color: rgb(var(--color-paper));
   }
   h1, h2, h3, h4 {
     @apply font-display tracking-tightest;
@@ -69,7 +107,7 @@
 
 /* Subtle paper grain via SVG noise */
 .bg-grain {
-  background-color: #F7F4EC;
+  background-color: rgb(var(--grain-bg));
   background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.05 0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
