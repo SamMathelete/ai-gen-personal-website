@@ -27,6 +27,16 @@ const themes = [
 const publications = [
   {
     n: '01',
+    venue: 'arXiv preprint',
+    status: '2026',
+    title: 'Causal Discovery in Equal Variance Linear Gaussian DAGs via SURE-Tuned Ridge Regression',
+    authors: 'S. Mishra, U. Mitra',
+    arxiv: '2608.17132',
+    url: 'https://arxiv.org/abs/2608.17132',
+    note: 'Studies causal discovery for equal-variance linear-Gaussian DAGs, tuning ridge-regression regularization by Stein’s unbiased risk estimate (SURE) to recover structure from observational data.',
+  },
+  {
+    n: '02',
     venue: 'ICASSP 2026',
     status: 'Barcelona, pp. 6196–6200',
     title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
@@ -36,7 +46,7 @@ const publications = [
     note: 'Proposes a learning-based framework for selecting soft interventions that improves causal-discovery efficiency and reduces experimental cost.',
   },
   {
-    n: '02',
+    n: '03',
     venue: 'IEEE Transactions on Green Communications and Networking',
     status: 'Vol. 10, pp. 1433–1445, 2026',
     title: 'SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception',
@@ -46,7 +56,7 @@ const publications = [
     note: 'Investigates one- and two-sided ASK modulations in noncoherent SISO systems assisted by an RIS, proposing novel energy- and sign-based receiver structures.',
   },
   {
-    n: '03',
+    n: '04',
     venue: 'IEEE Wireless Communications Letters',
     status: 'Vol. 15, pp. 300–304, 2026',
     title: 'Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System',
@@ -150,6 +160,11 @@ export default function Research() {
                     {p.doi && (
                       <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block font-mono text-xs link-underline text-ember">
                         doi: {p.doi}
+                      </a>
+                    )}
+                    {p.arxiv && (
+                      <a href={`https://arxiv.org/abs/${p.arxiv}`} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block font-mono text-xs link-underline text-ember">
+                        arXiv: {p.arxiv}
                       </a>
                     )}
                   </div>

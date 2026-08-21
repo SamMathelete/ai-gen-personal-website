@@ -4,6 +4,14 @@ import Layout from '../components/Layout';
 
 const featured = [
   {
+    venue: 'arXiv preprint',
+    status: '2026',
+    title: 'Causal Discovery in Equal Variance Linear Gaussian DAGs via SURE-Tuned Ridge Regression',
+    authors: 'S. Mishra, U. Mitra',
+    arxiv: '2608.17132',
+    url: 'https://arxiv.org/abs/2608.17132',
+  },
+  {
     venue: 'ICASSP 2026',
     status: 'Barcelona, Spain',
     title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
@@ -251,6 +259,16 @@ export default function Home() {
                         className="mt-3 inline-block font-mono text-xs link-underline text-ember"
                       >
                         doi: {p.doi}
+                      </a>
+                    )}
+                    {p.arxiv && (
+                      <a
+                        href={`https://arxiv.org/abs/${p.arxiv}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-block font-mono text-xs link-underline text-ember"
+                      >
+                        arXiv: {p.arxiv}
                       </a>
                     )}
                   </div>
