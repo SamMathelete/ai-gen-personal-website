@@ -54,6 +54,15 @@ export default function CV() {
   const publications = [
     {
       ref: '[1]',
+      authors: 'S. Mishra, U. Mitra',
+      title: 'Causal Discovery in Equal Variance Linear Gaussian DAGs via SURE-Tuned Ridge Regression',
+      venue: 'arXiv preprint',
+      year: '2026',
+      arxiv: '2608.17132',
+      url: 'https://arxiv.org/abs/2608.17132',
+    },
+    {
+      ref: '[2]',
       authors: 'C. Peng, S. Mishra, U. Mitra',
       title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
       venue: 'Proc. IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP), Barcelona, Spain',
@@ -62,7 +71,7 @@ export default function CV() {
       url: 'https://ieeexplore.ieee.org/document/11460954/',
     },
     {
-      ref: '[2]',
+      ref: '[3]',
       authors: 'S. Mishra, S. P. Dash, G. C. Alexandropoulos',
       title: 'SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception',
       venue: 'IEEE Transactions on Green Communications and Networking, vol. 10, pp. 1433–1445',
@@ -71,7 +80,7 @@ export default function CV() {
       url: 'https://ieeexplore.ieee.org/document/11247934/',
     },
     {
-      ref: '[3]',
+      ref: '[4]',
       authors: 'S. Mishra, S. P. Dash',
       title: 'Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System',
       venue: 'IEEE Wireless Communications Letters, vol. 15, pp. 300–304',
@@ -216,6 +225,16 @@ export default function CV() {
                     className="mt-1 inline-block font-mono text-xs link-underline text-ember"
                   >
                     doi: {p.doi}
+                  </a>
+                )}
+                {p.arxiv && (
+                  <a
+                    href={`https://arxiv.org/abs/${p.arxiv}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 inline-block font-mono text-xs link-underline text-ember"
+                  >
+                    arXiv: {p.arxiv}
                   </a>
                 )}
               </div>
