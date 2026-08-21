@@ -137,7 +137,7 @@ export default function CV() {
         <div className="grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
             <p className="eyebrow mb-4 flex items-center gap-3">
-              <span className="inline-block w-6 h-px bg-ember" /> Curriculum Vitae
+              <span className="inline-block w-6 h-px bg-accentGlow" /> Curriculum Vitae
             </p>
             <h1 className="font-display text-5xl sm:text-6xl tracking-tightest text-ink leading-[0.95]">
               Sambit Mishra
@@ -206,7 +206,7 @@ export default function CV() {
                 <p className="font-display text-lg mt-1 leading-snug">
                   &ldquo;
                   {p.url ? (
-                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-ember transition-colors">
+                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent transition-colors">
                       {p.title}
                     </a>
                   ) : (
@@ -222,7 +222,7 @@ export default function CV() {
                     href={`https://doi.org/${p.doi}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-1 inline-block font-mono text-xs link-underline text-ember"
+                    className="mt-1 inline-block font-mono text-xs link-underline text-accent"
                   >
                     doi: {p.doi}
                   </a>
@@ -303,7 +303,7 @@ function Section({ number, title, children }) {
     <section className="container-wide py-12 border-t border-rule">
       <div className="grid lg:grid-cols-12 gap-8">
         <div className="lg:col-span-3">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ {number}</p>
+          <p className="section-marker">§ {number}</p>
           <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">{title}</h2>
         </div>
         <div className="lg:col-span-9">{children}</div>
@@ -324,7 +324,7 @@ function Entry({ title, meta, right, points }) {
         <ul className="mt-4 space-y-2">
           {points.map((p, i) => (
             <li key={i} className="flex gap-3 text-graphite">
-              <span className="text-ember mt-2 shrink-0">▹</span>
+              <span className="text-accent mt-2 shrink-0">▹</span>
               <span>{p}</span>
             </li>
           ))}

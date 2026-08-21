@@ -18,9 +18,10 @@ module.exports = {
         graphite: 'rgb(var(--color-graphite) / <alpha-value>)',
         ash: 'rgb(var(--color-ash) / <alpha-value>)',
         rule: 'rgb(var(--color-rule) / <alpha-value>)',
-        ember: 'rgb(var(--color-ember) / <alpha-value>)',
-        emberSoft: 'rgb(var(--color-emberSoft) / <alpha-value>)',
         accent: 'rgb(var(--color-accent) / <alpha-value>)',
+        accentSoft: 'rgb(var(--color-accentSoft) / <alpha-value>)',
+        accentAlt: 'rgb(var(--color-accentAlt) / <alpha-value>)',
+        accentGlow: 'rgb(var(--color-accentGlow) / <alpha-value>)',
       },
       fontFamily: {
         display: ['"Fraunces"', 'Georgia', 'serif'],

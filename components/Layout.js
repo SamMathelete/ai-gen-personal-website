@@ -27,7 +27,7 @@ function ThemeToggle({ className = '' }) {
       onClick={toggle}
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-      className={`inline-flex items-center justify-center w-9 h-9 rounded-full border border-ink/15 text-ash hover:text-ember hover:border-ember/40 transition-colors ${className}`}
+      className={`inline-flex items-center justify-center w-9 h-9 rounded-full border border-ink/15 text-ash hover:text-accent hover:border-accent/40 transition-colors ${className}`}
     >
       {/* Render a stable icon until mounted to avoid hydration mismatch */}
       {mounted && theme === 'dark' ? (
@@ -77,7 +77,7 @@ export default function Layout({ children }) {
         <div className="container-wide flex items-center justify-between h-16">
           <Link href="/" legacyBehavior>
             <a className="group flex items-center gap-2 no-underline">
-              <span className="inline-block w-2 h-2 rounded-full bg-ember group-hover:scale-125 transition-transform" />
+              <span className="inline-block w-2 h-2 rounded-full bg-accentGlow group-hover:scale-125 transition-transform" />
               <span className="font-display text-lg font-semibold tracking-tightest text-ink">
                 Sambit Mishra
               </span>
@@ -94,7 +94,7 @@ export default function Layout({ children }) {
                 >
                   {item.label}
                   {isActive(item.href) && (
-                    <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-ember" />
+                    <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-accent" />
                   )}
                 </a>
               </Link>
@@ -134,7 +134,7 @@ export default function Layout({ children }) {
                   <a
                     onClick={() => setMenuOpen(false)}
                     className={`py-2.5 text-sm no-underline border-b border-rule/60 last:border-0 ${
-                      isActive(item.href) ? 'text-ember font-medium' : 'text-ink'
+                      isActive(item.href) ? 'text-accent font-medium' : 'text-ink'
                     }`}
                   >
                     {item.label}

@@ -65,13 +65,13 @@ function DagFigure() {
         <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 0 L 10 5 L 0 10 z" style={{ fill: 'rgb(var(--color-ink))' }} />
         </marker>
-        <marker id="arrowEmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 0 L 10 5 L 0 10 z" style={{ fill: 'rgb(var(--color-ember))' }} />
+        <marker id="arrowAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" style={{ fill: 'rgb(var(--color-accent))' }} />
         </marker>
         <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" style={{ stopColor: 'rgb(var(--color-ember))' }} stopOpacity="0.25" />
-          <stop offset="60%" style={{ stopColor: 'rgb(var(--color-ember))' }} stopOpacity="0.05" />
-          <stop offset="100%" style={{ stopColor: 'rgb(var(--color-ember))' }} stopOpacity="0" />
+          <stop offset="0%" style={{ stopColor: 'rgb(var(--color-accentGlow))' }} stopOpacity="0.22" />
+          <stop offset="60%" style={{ stopColor: 'rgb(var(--color-accentGlow))' }} stopOpacity="0.05" />
+          <stop offset="100%" style={{ stopColor: 'rgb(var(--color-accentGlow))' }} stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -87,7 +87,7 @@ function DagFigure() {
         <path className="edge e6" d="M 180 195 L 80 275" />
         <path className="edge e7" d="M 180 195 L 280 275" />
       </g>
-      <g fill="none" style={{ stroke: 'rgb(var(--color-ember))' }} strokeWidth="1.8" markerEnd="url(#arrowEmber)">
+      <g fill="none" style={{ stroke: 'rgb(var(--color-accent))' }} strokeWidth="1.8" markerEnd="url(#arrowAccent)">
         <path className="edge e5" d="M 180 195 L 180 285" />
       </g>
 
@@ -105,12 +105,16 @@ function DagFigure() {
 }
 
 function Node({ x, y, label, central = false, emphasized = false, delay }) {
-  const emberVar = 'rgb(var(--color-ember))';
+  // The emphasized node carries the gold accent, the central one the ink fill.
+  // Label colours are theme variables, so each stays legible when the palette
+  // inverts in dark mode.
+  const goldVar = 'rgb(var(--color-accentGlow))';
   const inkVar = 'rgb(var(--color-ink))';
   const creamVar = 'rgb(var(--color-cream))';
-  const fill = emphasized ? emberVar : central ? inkVar : creamVar;
-  const stroke = emphasized ? emberVar : inkVar;
-  const textFill = central || emphasized ? creamVar : inkVar;
+  const onGoldVar = 'rgb(var(--color-onGlow))';
+  const fill = emphasized ? goldVar : central ? inkVar : creamVar;
+  const stroke = emphasized ? goldVar : inkVar;
+  const textFill = emphasized ? onGoldVar : central ? creamVar : inkVar;
   return (
     <g style={{ animation: 'fadeUp 0.6s ease-out both', animationDelay: delay }}>
       <circle cx={x} cy={y} r={central ? 18 : 15} style={{ fill, stroke }} strokeWidth="1.5" />
@@ -142,7 +146,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-7 animate-fade-up">
               <p className="eyebrow mb-6 flex items-center gap-3">
-                <span className="inline-block w-6 h-px bg-ember" />
+                <span className="inline-block w-6 h-px bg-accentGlow" />
                 Ming Hsieh Department of ECE · University of Southern California
               </p>
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tightest text-ink">
@@ -238,12 +242,12 @@ export default function Home() {
                   <div className="sm:col-span-1 font-mono text-xs text-ash">[{String(i + 1).padStart(2, '0')}]</div>
                   <div className="sm:col-span-3">
                     <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink">{p.venue}</p>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ember mt-1">{p.status}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent mt-1">{p.status}</p>
                   </div>
                   <div className="sm:col-span-8">
                     <h3 className="font-display text-xl sm:text-2xl tracking-tightest leading-snug">
                       {p.url ? (
-                        <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-ember group-hover:text-ember transition-colors">
+                        <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent group-hover:text-accent transition-colors">
                           {p.title}
                         </a>
                       ) : (
@@ -256,7 +260,7 @@ export default function Home() {
                         href={`https://doi.org/${p.doi}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-3 inline-block font-mono text-xs link-underline text-ember"
+                        className="mt-3 inline-block font-mono text-xs link-underline text-accent"
                       >
                         doi: {p.doi}
                       </a>
