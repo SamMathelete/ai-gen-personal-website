@@ -49,7 +49,7 @@ export default function NewPost() {
           <div>
             <label className="font-mono text-xs uppercase tracking-[0.18em] text-ash">Title</label>
             <input
-              className="mt-2 w-full bg-cream border border-rule rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-ember transition-colors"
+              className="mt-2 w-full bg-cream border border-rule rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-accent transition-colors"
               placeholder="A working title…"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -58,7 +58,7 @@ export default function NewPost() {
           <div>
             <label className="font-mono text-xs uppercase tracking-[0.18em] text-ash">Date</label>
             <input
-              className="mt-2 w-full bg-cream border border-rule rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-ember transition-colors"
+              className="mt-2 w-full bg-cream border border-rule rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-accent transition-colors"
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
@@ -67,7 +67,7 @@ export default function NewPost() {
           <div>
             <label className="font-mono text-xs uppercase tracking-[0.18em] text-ash">Content (Markdown)</label>
             <textarea
-              className="mt-2 w-full bg-cream border border-rule rounded-lg px-4 py-3 h-72 text-ink font-mono text-sm focus:outline-none focus:border-ember transition-colors"
+              className="mt-2 w-full bg-cream border border-rule rounded-lg px-4 py-3 h-72 text-ink font-mono text-sm focus:outline-none focus:border-accent transition-colors"
               placeholder="# Heading&#10;&#10;Paragraph…"
               value={content}
               onChange={(e) => setContent(e.target.value)}

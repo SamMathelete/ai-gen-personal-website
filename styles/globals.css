@@ -3,39 +3,54 @@
 @tailwind utilities;
 
 /*
-  Crimson palette — driven entirely by CSS variables so the whole site can
+  Green & gold palette — driven entirely by CSS variables so the whole site can
   switch between light and dark themes. Values are space-separated RGB channels
   so Tailwind's `<alpha-value>` opacity modifiers keep working.
+
+  Roles (kept palette-neutral so a future recolour is a CSS-only change):
+    paper/cream   two alternating page surfaces (ivory ↔ parchment)
+    ink/graphite  headings / body text
+    ash           muted meta text
+    rule          hairline borders
+    accent        primary accent — interactive: links, hovers, DOIs
+    accentSoft    deeper primary, for hover/pressed states
+    accentAlt     secondary accent — structural labels; safe for text
+    accentGlow    secondary accent, decorative only (marks, fills, halos)
+
+  Every text pair below clears WCAG AA (≥4.5:1) on both surfaces.
 */
 :root {
-  --color-paper: 250 246 245;      /* warm near-white, faint rose */
-  --color-cream: 244 235 233;      /* elevated warm surface */
-  --color-ink: 26 15 17;           /* near-black, warm foreground */
-  --color-graphite: 61 40 43;      /* body text */
-  --color-ash: 135 104 108;        /* muted mauve */
-  --color-rule: 232 216 214;       /* hairline borders */
-  --color-ember: 200 30 58;        /* crimson — primary accent */
-  --color-emberSoft: 225 78 104;   /* lighter crimson-rose */
-  --color-accent: 15 118 110;      /* teal — complementary accent */
+  --color-paper: 249 250 244;      /* ivory, faintest green cast */
+  --color-cream: 245 239 220;      /* warm parchment band */
+  --color-ink: 22 27 18;           /* near-black, green undertone  16.7:1 */
+  --color-graphite: 53 64 44;      /* body text                    10.4:1 */
+  --color-ash: 95 110 86;          /* muted sage meta text          5.2:1 */
+  --color-rule: 224 226 208;       /* hairline borders */
+  --color-accent: 31 111 67;       /* pine green — interactive      5.9:1 */
+  --color-accentSoft: 23 87 52;    /* deeper pine, hover */
+  --color-accentAlt: 133 103 10;   /* antique gold — labels         5.1:1 */
+  --color-accentGlow: 212 160 23;  /* goldenrod — decorative only */
+  --color-onGlow: 22 27 18;        /* text on accentGlow fills      7.4:1 */
 
-  --grain-bg: 250 246 245;
-  --grain-matrix: 0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.05 0 0 0 0.04 0;
+  --grain-bg: 249 250 244;
   color-scheme: light;
 }
 
 .dark {
-  --color-paper: 20 16 16;         /* deep warm charcoal */
-  --color-cream: 31 24 24;         /* elevated dark surface */
-  --color-ink: 242 231 230;        /* near-white, warm foreground */
-  --color-graphite: 208 190 192;   /* body text */
-  --color-ash: 158 130 134;        /* muted mauve */
-  --color-rule: 58 44 46;          /* hairline borders */
-  --color-ember: 240 78 104;       /* bright crimson — primary accent */
-  --color-emberSoft: 120 26 42;    /* deep crimson-rose */
-  --color-accent: 45 212 191;      /* bright teal — complementary accent */
+  --color-paper: 18 21 15;         /* deep green-black */
+  --color-cream: 27 29 20;         /* elevated olive surface */
+  --color-ink: 237 240 228;        /* warm off-white              16.0:1 */
+  --color-graphite: 198 206 187;   /* body text                   11.4:1 */
+  --color-ash: 141 154 130;        /* muted sage meta text         6.2:1 */
+  --color-rule: 46 54 40;          /* hairline borders */
+  --color-accent: 98 194 136;      /* spring green — interactive   8.4:1 */
+  --color-accentSoft: 134 214 165; /* lighter green, hover */
+  --color-accentAlt: 232 194 92;   /* bright gold — labels        10.8:1 */
+  --color-accentGlow: 232 194 92;  /* bright gold — decorative */
+  --color-onGlow: 22 27 18;        /* accentGlow stays light in both
+                                      themes, so this stays dark  10.3:1 */
 
-  --grain-bg: 20 16 16;
-  --grain-matrix: 0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0.9 0 0 0 0.05 0;
+  --grain-bg: 18 21 15;
   color-scheme: dark;
 }
 
@@ -49,7 +64,7 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   ::selection {
-    background-color: rgb(var(--color-ember));
+    background-color: rgb(var(--color-accent));
     color: rgb(var(--color-paper));
   }
   h1, h2, h3, h4 {
@@ -60,7 +75,7 @@
     transition: color 0.2s ease, text-decoration-color 0.2s ease;
   }
   a:hover {
-    @apply decoration-ember text-ember;
+    @apply decoration-accent text-accent;
   }
 }
 
@@ -71,8 +86,13 @@
   .container-wide {
     @apply max-w-6xl mx-auto px-6 sm:px-8;
   }
+  /* Structural labels carry the secondary (gold) accent; interactive elements
+     carry the primary (green) one. */
   .eyebrow {
-    @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ash;
+    @apply font-mono text-[11px] uppercase tracking-[0.2em] text-accentAlt;
+  }
+  .section-marker {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-accentAlt;
   }
   .rule-divider {
     @apply h-px bg-rule;
@@ -89,19 +109,19 @@
     background-size: 100% 1px;
   }
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-ink text-paper px-5 py-2.5 rounded-full text-sm font-medium no-underline hover:bg-ember transition-colors duration-200;
+    @apply inline-flex items-center gap-2 bg-ink text-paper px-5 py-2.5 rounded-full text-sm font-medium no-underline hover:bg-accent transition-colors duration-200;
   }
   .btn-ghost {
     @apply inline-flex items-center gap-2 border border-ink/20 text-ink px-5 py-2.5 rounded-full text-sm font-medium no-underline hover:bg-ink hover:text-paper transition-colors duration-200;
   }
   .tag {
-    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono bg-ink/[0.04] text-graphite border border-ink/10;
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono bg-accentAlt/[0.07] text-graphite border border-accentAlt/25;
   }
   .card {
     @apply bg-cream border border-rule rounded-2xl p-6 sm:p-8;
   }
   .card-hover {
-    @apply transition-all duration-300 hover:border-ink/30 hover:-translate-y-0.5;
+    @apply transition-all duration-300 hover:border-accent/40 hover:-translate-y-0.5;
   }
 }
 
@@ -155,4 +175,4 @@
 .prose-classic p { @apply text-graphite leading-relaxed mb-4; }
 .prose-classic ul { @apply list-disc pl-6 mb-4 text-graphite; }
 .prose-classic li { @apply mb-1; }
-.prose-classic a { @apply link-underline text-ember; }
+.prose-classic a { @apply link-underline text-accent; }

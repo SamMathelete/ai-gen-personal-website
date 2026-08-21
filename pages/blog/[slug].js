@@ -11,7 +11,7 @@ export default function Post({ postData }) {
       </Head>
       <article className="container-prose pt-12 sm:pt-20 pb-20">
         <Link href="/blog" legacyBehavior>
-          <a className="font-mono text-xs text-ash hover:text-ember no-underline inline-flex items-center gap-2 mb-8">
+          <a className="font-mono text-xs text-ash hover:text-accent no-underline inline-flex items-center gap-2 mb-8">
             ← all writing
           </a>
         </Link>

@@ -16,7 +16,7 @@ export default function Blog({ posts }) {
 
       <section className="container-wide pt-12 sm:pt-20 pb-12">
         <p className="eyebrow mb-4 flex items-center gap-3">
-          <span className="inline-block w-6 h-px bg-ember" /> Writing
+          <span className="inline-block w-6 h-px bg-accentGlow" /> Writing
         </p>
         <h1 className="font-display text-5xl sm:text-6xl tracking-tightest text-ink leading-[0.95] max-w-3xl">
           Notes from the desk.
@@ -46,11 +46,11 @@ export default function Blog({ posts }) {
                       {date && new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' })}
                     </div>
                     <div className="sm:col-span-7">
-                      <h2 className="font-display text-2xl text-ink tracking-tightest leading-snug group-hover:text-ember transition-colors">
+                      <h2 className="font-display text-2xl text-ink tracking-tightest leading-snug group-hover:text-accent transition-colors">
                         {title}
                       </h2>
                     </div>
-                    <div className="sm:col-span-1 text-right text-ember opacity-0 group-hover:opacity-100 transition-opacity">→</div>
+                    <div className="sm:col-span-1 text-right text-accent opacity-0 group-hover:opacity-100 transition-opacity">→</div>
                   </a>
                 </Link>
               </li>

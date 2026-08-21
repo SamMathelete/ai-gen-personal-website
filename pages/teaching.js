@@ -32,7 +32,7 @@ export default function Teaching() {
       {/* HEADER */}
       <section className="container-wide pt-12 sm:pt-20 pb-12">
         <p className="eyebrow mb-4 flex items-center gap-3">
-          <span className="inline-block w-6 h-px bg-ember" /> Teaching
+          <span className="inline-block w-6 h-px bg-accentGlow" /> Teaching
         </p>
         <h1 className="font-display text-5xl sm:text-6xl tracking-tightest text-ink leading-[0.95] max-w-4xl">
           The work of thinking, made visible.
@@ -48,7 +48,7 @@ export default function Teaching() {
       <section className="container-wide py-12 border-t border-rule">
         <div className="grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-3">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ 01</p>
+            <p className="section-marker">§ 01</p>
             <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">Principles.</h2>
           </div>
           <div className="lg:col-span-9">
@@ -69,7 +69,7 @@ export default function Teaching() {
       <section className="container-wide py-12 border-t border-rule">
         <div className="grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-3">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ 02</p>
+            <p className="section-marker">§ 02</p>
             <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">Mentorship &amp; service.</h2>
           </div>
           <div className="lg:col-span-9 space-y-8">
@@ -83,21 +83,21 @@ export default function Teaching() {
               </p>
               <ul className="mt-4 space-y-2 text-graphite">
                 <li className="flex gap-3">
-                  <span className="text-ember mt-2 shrink-0">▹</span>
+                  <span className="text-accent mt-2 shrink-0">▹</span>
                   <span>
                     Coordinated five technical societies and two campus fests, allocating funds and
                     coaching society heads through their first events as student leaders.
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-ember mt-2 shrink-0">▹</span>
+                  <span className="text-accent mt-2 shrink-0">▹</span>
                   <span>
                     Led IIT Bhubaneswar&rsquo;s contingent at <em className="not-italic">Inter-IIT Tech Meet 2023</em>,
                     placing 10th overall among 23 IITs.
                   </span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-ember mt-2 shrink-0">▹</span>
+                  <span className="text-accent mt-2 shrink-0">▹</span>
                   <span>
                     The role taught me that a good lecturer and a good organizer share the same
                     instinct: anticipate where someone is going to get stuck, and clear the path
@@ -130,7 +130,7 @@ export default function Teaching() {
       <section className="container-wide py-12 border-t border-rule">
         <div className="grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-3">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ 03</p>
+            <p className="section-marker">§ 03</p>
             <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">Currently.</h2>
           </div>
           <div className="lg:col-span-9">
@@ -146,7 +146,7 @@ export default function Teaching() {
                 { code: 'EE 563', name: 'Inference & Estimation Theory', term: 'Spring 2026 · A' },
               ].map((c) => (
                 <li key={c.code} className="bg-paper p-6">
-                  <p className="font-mono text-xs text-ember">{c.code}</p>
+                  <p className="font-mono text-xs text-accent">{c.code}</p>
                   <p className="font-display text-lg text-ink tracking-tightest mt-1">{c.name}</p>
                   <p className="font-mono text-xs text-ash mt-1">{c.term}</p>
                 </li>

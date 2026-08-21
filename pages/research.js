@@ -79,7 +79,7 @@ export default function Research() {
       {/* HEADER */}
       <section className="container-wide pt-12 sm:pt-20 pb-12">
         <p className="eyebrow mb-4 flex items-center gap-3">
-          <span className="inline-block w-6 h-px bg-ember" /> Research
+          <span className="inline-block w-6 h-px bg-accentGlow" /> Research
         </p>
         <h1 className="font-display text-5xl sm:text-6xl tracking-tightest text-ink leading-[0.95] max-w-4xl">
           Reliable causal structure, learned at scale.
@@ -95,13 +95,13 @@ export default function Research() {
       <section className="container-wide py-12 border-t border-rule">
         <div className="grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-3">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ 01</p>
+            <p className="section-marker">§ 01</p>
             <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">Themes.</h2>
           </div>
           <div className="lg:col-span-9 grid sm:grid-cols-2 gap-px bg-rule rounded-2xl overflow-hidden border border-rule">
             {themes.map((t, i) => (
               <article key={t.title} className="bg-paper p-6 sm:p-8">
-                <p className="font-mono text-xs text-ember mb-3">/ 0{i + 1}</p>
+                <p className="font-mono text-xs text-accent mb-3">/ 0{i + 1}</p>
                 <h3 className="font-display text-xl tracking-tightest text-ink">{t.title}</h3>
                 <p className="mt-3 text-graphite text-sm leading-relaxed">{t.body}</p>
               </article>
@@ -115,7 +115,7 @@ export default function Research() {
         <div className="container-wide py-16">
           <div className="grid lg:grid-cols-12 gap-8 mb-10">
             <div className="lg:col-span-3">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ 02</p>
+              <p className="section-marker">§ 02</p>
               <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">Publications.</h2>
             </div>
             <div className="lg:col-span-9">
@@ -133,12 +133,12 @@ export default function Research() {
                   <div className="sm:col-span-1 font-mono text-xs text-ash">[{p.n}]</div>
                   <div className="sm:col-span-3">
                     <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink">{p.venue}</p>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ember mt-1">{p.status}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent mt-1">{p.status}</p>
                   </div>
                   <div className="sm:col-span-8">
                     <h3 className="font-display text-xl sm:text-2xl leading-snug tracking-tightest">
                       {p.url ? (
-                        <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-ember transition-colors">
+                        <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent transition-colors">
                           {p.title}
                         </a>
                       ) : (
@@ -148,7 +148,7 @@ export default function Research() {
                     <p className="mt-2 text-sm text-ash">{p.authors}</p>
                     <p className="mt-3 text-graphite text-sm leading-relaxed">{p.note}</p>
                     {p.doi && (
-                      <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block font-mono text-xs link-underline text-ember">
+                      <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block font-mono text-xs link-underline text-accent">
                         doi: {p.doi}
                       </a>
                     )}
@@ -164,7 +164,7 @@ export default function Research() {
       <section className="container-wide py-16">
         <div className="grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-3">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ash">§ 03</p>
+            <p className="section-marker">§ 03</p>
             <h2 className="font-display text-3xl tracking-tightest text-ink mt-2">Earlier projects.</h2>
           </div>
           <div className="lg:col-span-9 space-y-8">
@@ -178,7 +178,7 @@ export default function Research() {
                 <ul className="mt-4 space-y-2">
                   {p.points.map((pt, i) => (
                     <li key={i} className="flex gap-3 text-graphite">
-                      <span className="text-ember mt-2 shrink-0">▹</span>
+                      <span className="text-accent mt-2 shrink-0">▹</span>
                       <span>{pt}</span>
                     </li>
                   ))}
@@ -191,8 +191,8 @@ export default function Research() {
 
       {/* CTA */}
       <section className="container-wide pb-20">
-        <div className="rounded-2xl border border-ember/20 bg-ember/[0.05] text-center py-14 px-6">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-ember mb-4">Collaborate</p>
+        <div className="rounded-2xl border border-accentAlt/25 bg-accentAlt/[0.07] text-center py-14 px-6">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accentAlt mb-4">Collaborate</p>
           <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-ink">
             Working on a related question?
           </h2>
