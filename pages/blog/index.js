@@ -1,5 +1,6 @@
-import Head from 'next/head';
 import Layout from '../../components/Layout';
+import Seo from '../../components/Seo';
+import { breadcrumbJsonLd } from '../../lib/site';
 import Link from 'next/link';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { getSortedPostsData } from '../../lib/posts';
@@ -11,9 +12,14 @@ export default function Blog({ posts }) {
 
   return (
     <Layout>
-      <Head>
-        <title>Writing | Sambit Mishra</title>
-      </Head>
+      <Seo
+        title="Writing"
+        description="Essays by Sambit Mishra on causal inference, optimization, and the PhD experience — occasional notes from a graduate researcher at USC."
+        jsonLd={[
+          breadcrumbJsonLd([{ name: 'Writing', path: '/blog' }]),
+          { '@type': 'Blog', name: 'Writing — Sambit Mishra', inLanguage: 'en-US' },
+        ]}
+      />
 
       <section className="container-wide pt-12 sm:pt-20 pb-12">
         <p className="eyebrow mb-4 flex items-center gap-3">

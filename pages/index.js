@@ -1,41 +1,10 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import Seo from '../components/Seo';
+import { forSurface, publicationListJsonLd } from '../lib/publications';
+import { siteUrl, site, researchTopics } from '../lib/site';
 
-const featured = [
-  {
-    venue: 'arXiv preprint',
-    status: '2026',
-    title: 'Causal Discovery in Equal Variance Linear Gaussian DAGs via SURE-Tuned Ridge Regression',
-    authors: 'S. Mishra, U. Mitra',
-    arxiv: '2608.17132',
-    url: 'https://arxiv.org/abs/2608.17132',
-  },
-  {
-    venue: 'ICASSP 2026',
-    status: 'Barcelona, Spain',
-    title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
-    authors: 'C. Peng, S. Mishra, U. Mitra',
-    doi: '10.1109/ICASSP55912.2026.11460954',
-    url: 'https://ieeexplore.ieee.org/document/11460954/',
-  },
-  {
-    venue: 'IEEE TGCN, vol. 10',
-    status: '2026',
-    title: 'SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception',
-    authors: 'S. Mishra, S. P. Dash, G. C. Alexandropoulos',
-    doi: '10.1109/TGCN.2025.3633182',
-    url: 'https://ieeexplore.ieee.org/document/11247934/',
-  },
-  {
-    venue: 'IEEE WCL, vol. 15',
-    status: '2026',
-    title: 'Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System',
-    authors: 'S. Mishra, S. P. Dash',
-    doi: '10.1109/LWC.2025.3624154',
-    url: 'https://ieeexplore.ieee.org/document/11214252/',
-  },
-];
+const featured = forSurface('home');
 
 const focus = [
   {
@@ -136,9 +105,23 @@ function Node({ x, y, label, central = false, emphasized = false, delay }) {
 export default function Home() {
   return (
     <Layout>
-      <Head>
-        <title>Sambit Mishra — Causal inference & probabilistic graphical models</title>
-      </Head>
+      <Seo
+        path="/"
+        keywords={researchTopics}
+        jsonLd={[
+          {
+            '@type': 'ProfilePage',
+            '@id': `${siteUrl}/#profilepage`,
+            url: `${siteUrl}/`,
+            name: site.defaultTitle,
+            description: site.defaultDescription,
+            isPartOf: { '@id': `${siteUrl}/#website` },
+            mainEntity: { '@id': `${siteUrl}/#person` },
+            about: { '@id': `${siteUrl}/#person` },
+          },
+          publicationListJsonLd(),
+        ]}
+      />
 
       {/* HERO */}
       <section className="border-b border-rule">
@@ -254,7 +237,7 @@ export default function Home() {
                         <span className="text-ink">{p.title}</span>
                       )}
                     </h3>
-                    <p className="mt-2 text-sm text-ash">{p.authors}</p>
+                    <p className="mt-2 text-sm text-ash">{p.authorsLine}</p>
                     {p.doi && (
                       <a
                         href={`https://doi.org/${p.doi}`}

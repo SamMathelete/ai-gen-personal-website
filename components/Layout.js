@@ -184,6 +184,7 @@ export default function Layout({ children }) {
                 {isWritingEnabled && (
                   <li><Link href="/blog" legacyBehavior><a className="link-underline">Writing</a></Link></li>
                 )}
+                <li><Link href="/stats" legacyBehavior><a className="link-underline">Site statistics</a></Link></li>
               </ul>
             </div>
           </div>
