@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import { isTeachingEnabled, isWritingEnabled } from '../lib/features';
 
 function ThemeToggle({ className = '' }) {
   const [theme, setTheme] = useState('light');
@@ -56,13 +57,15 @@ export default function Layout({ children }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Sections gated by a feature flag stay in the codebase but are dropped from
+  // the navigation entirely while disabled (see lib/features.js).
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/research', label: 'Research' },
-    { href: '/teaching', label: 'Teaching' },
-    { href: '/blog', label: 'Writing' },
+    { href: '/teaching', label: 'Teaching', enabled: isTeachingEnabled },
+    { href: '/blog', label: 'Writing', enabled: isWritingEnabled },
     { href: '/cv', label: 'CV' },
-  ];
+  ].filter((item) => item.enabled !== false);
 
   const isActive = (href) =>
     href === '/' ? router.pathname === '/' : router.pathname.startsWith(href);
@@ -178,7 +181,9 @@ export default function Layout({ children }) {
               <ul className="space-y-1.5 text-sm">
                 <li><Link href="/research" legacyBehavior><a className="link-underline">Research &amp; publications</a></Link></li>
                 <li><Link href="/cv" legacyBehavior><a className="link-underline">Curriculum Vitae</a></Link></li>
-                <li><Link href="/blog" legacyBehavior><a className="link-underline">Writing</a></Link></li>
+                {isWritingEnabled && (
+                  <li><Link href="/blog" legacyBehavior><a className="link-underline">Writing</a></Link></li>
+                )}
               </ul>
             </div>
           </div>

@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import { getAllPostSlugs, getPostData } from '../../lib/posts';
+import { isWritingEnabled } from '../../lib/features';
 
 export default function Post({ postData }) {
   return (
@@ -38,13 +39,21 @@ export default function Post({ postData }) {
   );
 }
 
+// While the writing flag is off, no post routes are generated and any request
+// for one falls through to the 404 page.
 export async function getStaticPaths() {
+  if (!isWritingEnabled) {
+    return { paths: [], fallback: false };
+  }
   const slugs = getAllPostSlugs();
   const paths = slugs.map((slug) => ({ params: { slug } }));
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
+  if (!isWritingEnabled) {
+    return { notFound: true };
+  }
   const postData = getPostData(params.slug);
   return { props: { postData } };
 }

@@ -3,6 +3,7 @@ import Layout from '../../components/Layout';
 import Link from 'next/link';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { getSortedPostsData } from '../../lib/posts';
+import { isWritingEnabled } from '../../lib/features';
 
 export default function Blog({ posts }) {
   const { data: session } = useSession();
@@ -77,7 +78,12 @@ export default function Blog({ posts }) {
   );
 }
 
+// The writing section is retained in the codebase but disabled: while the flag
+// is off the route renders the 404 page instead of the post list.
 export async function getStaticProps() {
+  if (!isWritingEnabled) {
+    return { notFound: true };
+  }
   const posts = getSortedPostsData();
   return { props: { posts } };
 }
