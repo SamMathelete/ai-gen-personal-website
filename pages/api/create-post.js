@@ -2,8 +2,14 @@ import fs from 'fs';
 import path from 'path';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from './auth/[...nextauth]';
+import { isWritingEnabled } from '../../lib/features';
 
 export default async function handler(req, res) {
+  // Post creation belongs to the disabled writing section.
+  if (!isWritingEnabled) {
+    return res.status(404).json({ message: 'Not Found' });
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }

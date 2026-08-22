@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
+import { isTeachingEnabled } from '../lib/features';
 
 const principles = [
   {
@@ -160,4 +161,13 @@ export default function Teaching() {
       </section>
     </Layout>
   );
+}
+
+// The teaching section is retained in the codebase but disabled: while the
+// flag is off the route renders the 404 page instead of this content.
+export async function getStaticProps() {
+  if (!isTeachingEnabled) {
+    return { notFound: true };
+  }
+  return { props: {} };
 }

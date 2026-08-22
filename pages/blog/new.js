@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { getSession } from 'next-auth/react';
 import Layout from '../../components/Layout';
+import { isWritingEnabled } from '../../lib/features';
 
 export default function NewPost() {
   const { data: session } = useSession();
@@ -84,6 +85,10 @@ export default function NewPost() {
 }
 
 export async function getServerSideProps(context) {
+  // The post editor is part of the disabled writing section.
+  if (!isWritingEnabled) {
+    return { notFound: true };
+  }
   const session = await getSession(context);
   if (!session || session.user.email !== process.env.AUTHORIZED_EMAIL) {
     return {
