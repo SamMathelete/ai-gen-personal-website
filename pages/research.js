@@ -1,5 +1,7 @@
-import Head from 'next/head';
 import Layout from '../components/Layout';
+import Seo from '../components/Seo';
+import { forSurface, publicationListJsonLd } from '../lib/publications';
+import { breadcrumbJsonLd, researchTopics } from '../lib/site';
 
 const themes = [
   {
@@ -24,48 +26,7 @@ const themes = [
   },
 ];
 
-const publications = [
-  {
-    n: '01',
-    venue: 'arXiv preprint',
-    status: '2026',
-    title: 'Causal Discovery in Equal Variance Linear Gaussian DAGs via SURE-Tuned Ridge Regression',
-    authors: 'S. Mishra, U. Mitra',
-    arxiv: '2608.17132',
-    url: 'https://arxiv.org/abs/2608.17132',
-    note: 'Studies causal discovery for equal-variance linear-Gaussian DAGs, tuning ridge-regression regularization by Stein’s unbiased risk estimate (SURE) to recover structure from observational data.',
-  },
-  {
-    n: '02',
-    venue: 'ICASSP 2026',
-    status: 'Barcelona, pp. 6196–6200',
-    title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
-    authors: 'C. Peng, S. Mishra, U. Mitra',
-    doi: '10.1109/ICASSP55912.2026.11460954',
-    url: 'https://ieeexplore.ieee.org/document/11460954/',
-    note: 'Proposes a learning-based framework for selecting soft interventions that improves causal-discovery efficiency and reduces experimental cost.',
-  },
-  {
-    n: '03',
-    venue: 'IEEE Transactions on Green Communications and Networking',
-    status: 'Vol. 10, pp. 1433–1445, 2026',
-    title: 'SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception',
-    authors: 'S. Mishra, S. P. Dash, G. C. Alexandropoulos',
-    doi: '10.1109/TGCN.2025.3633182',
-    url: 'https://ieeexplore.ieee.org/document/11247934/',
-    note: 'Investigates one- and two-sided ASK modulations in noncoherent SISO systems assisted by an RIS, proposing novel energy- and sign-based receiver structures.',
-  },
-  {
-    n: '04',
-    venue: 'IEEE Wireless Communications Letters',
-    status: 'Vol. 15, pp. 300–304, 2026',
-    title: 'Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System',
-    authors: 'S. Mishra, S. P. Dash',
-    doi: '10.1109/LWC.2025.3624154',
-    url: 'https://ieeexplore.ieee.org/document/11214252/',
-    note: 'Considers RIS-aided wireless communication with one-sided ASK and an optimal noncoherent maximum-likelihood detection rule.',
-  },
-];
+const publications = forSurface('research');
 
 const earlierProjects = [
   {
@@ -82,9 +43,15 @@ const earlierProjects = [
 export default function Research() {
   return (
     <Layout>
-      <Head>
-        <title>Research | Sambit Mishra</title>
-      </Head>
+      <Seo
+        title="Research: causal discovery & identifiability"
+        description="Publications and research themes of Sambit Mishra: identifiability theory, scalable causal discovery by continuous optimization, bounds under partial identifiability, and optimized soft interventions."
+        keywords={researchTopics}
+        jsonLd={[
+          breadcrumbJsonLd([{ name: 'Research', path: '/research' }]),
+          publicationListJsonLd(),
+        ]}
+      />
 
       {/* HEADER */}
       <section className="container-wide pt-12 sm:pt-20 pb-12">
@@ -155,7 +122,7 @@ export default function Research() {
                         <span className="text-ink">{p.title}</span>
                       )}
                     </h3>
-                    <p className="mt-2 text-sm text-ash">{p.authors}</p>
+                    <p className="mt-2 text-sm text-ash">{p.authorsLine}</p>
                     <p className="mt-3 text-graphite text-sm leading-relaxed">{p.note}</p>
                     {p.doi && (
                       <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block font-mono text-xs link-underline text-accent">

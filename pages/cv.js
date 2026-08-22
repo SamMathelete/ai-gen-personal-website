@@ -1,5 +1,7 @@
-import Head from 'next/head';
 import Layout from '../components/Layout';
+import Seo from '../components/Seo';
+import { forSurface } from '../lib/publications';
+import { absoluteUrl, breadcrumbJsonLd, siteUrl } from '../lib/site';
 
 export default function CV() {
   const education = [
@@ -51,44 +53,7 @@ export default function CV() {
     },
   ];
 
-  const publications = [
-    {
-      ref: '[1]',
-      authors: 'S. Mishra, U. Mitra',
-      title: 'Causal Discovery in Equal Variance Linear Gaussian DAGs via SURE-Tuned Ridge Regression',
-      venue: 'arXiv preprint',
-      year: '2026',
-      arxiv: '2608.17132',
-      url: 'https://arxiv.org/abs/2608.17132',
-    },
-    {
-      ref: '[2]',
-      authors: 'C. Peng, S. Mishra, U. Mitra',
-      title: 'Learning to Intervene: Optimized Soft Intervention Selection for Causal Discovery',
-      venue: 'Proc. IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP), Barcelona, Spain',
-      year: '2026, pp. 6196–6200',
-      doi: '10.1109/ICASSP55912.2026.11460954',
-      url: 'https://ieeexplore.ieee.org/document/11460954/',
-    },
-    {
-      ref: '[3]',
-      authors: 'S. Mishra, S. P. Dash, G. C. Alexandropoulos',
-      title: 'SER-Optimized Multi-Level ASK Modulations for RIS-Assisted Communications With Energy- and Sign-Based Noncoherent Reception',
-      venue: 'IEEE Transactions on Green Communications and Networking, vol. 10, pp. 1433–1445',
-      year: '2026',
-      doi: '10.1109/TGCN.2025.3633182',
-      url: 'https://ieeexplore.ieee.org/document/11247934/',
-    },
-    {
-      ref: '[4]',
-      authors: 'S. Mishra, S. P. Dash',
-      title: 'Error Analysis With Optimal Receiver and Multi-Level ASK for RIS-Assisted Noncoherent Wireless System',
-      venue: 'IEEE Wireless Communications Letters, vol. 15, pp. 300–304',
-      year: '2026',
-      doi: '10.1109/LWC.2025.3624154',
-      url: 'https://ieeexplore.ieee.org/document/11214252/',
-    },
-  ];
+  const publications = forSurface('cv');
 
   const industry = [
     {
@@ -129,9 +94,23 @@ export default function CV() {
 
   return (
     <Layout>
-      <Head>
-        <title>CV | Sambit Mishra</title>
-      </Head>
+      <Seo
+        title="Curriculum Vitae"
+        description="Curriculum vitae of Sambit Mishra: PhD in Electrical & Computer Engineering at USC, education, research and industry experience, publications, awards, and technical skills. PDF available."
+        jsonLd={[
+          breadcrumbJsonLd([{ name: 'Curriculum Vitae', path: '/cv' }]),
+          {
+            '@type': 'WebPage',
+            '@id': `${siteUrl}/cv#webpage`,
+            url: absoluteUrl('/cv'),
+            name: 'Curriculum Vitae — Sambit Mishra',
+            isPartOf: { '@id': `${siteUrl}/#website` },
+            about: { '@id': `${siteUrl}/#person` },
+            mainEntity: { '@id': `${siteUrl}/#person` },
+            significantLink: absoluteUrl('/Sambit_Mishra_CV.pdf'),
+          },
+        ]}
+      />
 
       <section className="container-wide pt-12 sm:pt-20 pb-12">
         <div className="grid lg:grid-cols-12 gap-10 items-end">
@@ -202,7 +181,7 @@ export default function CV() {
             <li key={p.ref} className="grid sm:grid-cols-12 gap-4 pb-6 border-b border-rule last:border-0">
               <div className="sm:col-span-1 font-mono text-xs text-ash">{p.ref}</div>
               <div className="sm:col-span-11">
-                <p className="text-sm text-ash">{p.authors}</p>
+                <p className="text-sm text-ash">{p.authorsLine}</p>
                 <p className="font-display text-lg mt-1 leading-snug">
                   &ldquo;
                   {p.url ? (

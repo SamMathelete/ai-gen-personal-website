@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { getSession } from 'next-auth/react';
 import Layout from '../../components/Layout';
+import Seo from '../../components/Seo';
 import { isWritingEnabled } from '../../lib/features';
 
 export default function NewPost() {
@@ -30,6 +31,7 @@ export default function NewPost() {
   if (!session) {
     return (
       <Layout>
+        <Seo title="New post" description="Sign in to create a post." noindex />
         <section className="container-prose py-20 text-center">
           <p className="font-display text-2xl text-ink mb-6 tracking-tightest">Sign in required.</p>
           <button onClick={() => signIn('google')} className="btn-primary">Sign in with Google</button>
@@ -40,6 +42,7 @@ export default function NewPost() {
 
   return (
     <Layout>
+      <Seo title="New post" description="Draft and publish a new post." noindex />
       <section className="container-prose pt-12 sm:pt-20 pb-20">
         <p className="eyebrow mb-4">New post</p>
         <h1 className="font-display text-4xl sm:text-5xl tracking-tightest text-ink leading-[1.0] mb-10">

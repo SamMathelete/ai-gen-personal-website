@@ -1,5 +1,6 @@
-import Head from 'next/head';
 import Layout from '../components/Layout';
+import Seo from '../components/Seo';
+import { breadcrumbJsonLd } from '../lib/site';
 import { isTeachingEnabled } from '../lib/features';
 
 const principles = [
@@ -26,9 +27,11 @@ const principles = [
 export default function Teaching() {
   return (
     <Layout>
-      <Head>
-        <title>Teaching | Sambit Mishra</title>
-      </Head>
+      <Seo
+        title="Teaching"
+        description="Teaching approach and mentoring of Sambit Mishra — moving students from intuition to formalism, showing the moving parts of a system, and keeping attention equitable."
+        jsonLd={[breadcrumbJsonLd([{ name: 'Teaching', path: '/teaching' }])]}
+      />
 
       {/* HEADER */}
       <section className="container-wide pt-12 sm:pt-20 pb-12">

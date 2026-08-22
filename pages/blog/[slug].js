@@ -1,15 +1,39 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
+import Seo from '../../components/Seo';
+import { absoluteUrl, breadcrumbJsonLd, site, siteUrl } from '../../lib/site';
 import { getAllPostSlugs, getPostData } from '../../lib/posts';
 import { isWritingEnabled } from '../../lib/features';
 
 export default function Post({ postData }) {
   return (
     <Layout>
-      <Head>
-        <title>{postData.title} | Sambit Mishra</title>
-      </Head>
+      <Seo
+        title={postData.title}
+        description={postData.excerpt || site.defaultDescription}
+        type="article"
+        openGraph={{
+          'article:author': site.name,
+          ...(postData.date ? { 'article:published_time': postData.date } : {}),
+        }}
+        jsonLd={[
+          breadcrumbJsonLd([
+            { name: 'Writing', path: '/blog' },
+            { name: postData.title, path: `/blog/${postData.slug}` },
+          ]),
+          {
+            '@type': 'BlogPosting',
+            headline: postData.title,
+            description: postData.excerpt || undefined,
+            url: absoluteUrl(`/blog/${postData.slug}`),
+            mainEntityOfPage: absoluteUrl(`/blog/${postData.slug}`),
+            author: { '@id': `${siteUrl}/#person` },
+            publisher: { '@id': `${siteUrl}/#person` },
+            inLanguage: 'en-US',
+            ...(postData.date ? { datePublished: postData.date } : {}),
+          },
+        ]}
+      />
       <article className="container-prose pt-12 sm:pt-20 pb-20">
         <Link href="/blog" legacyBehavior>
           <a className="font-mono text-xs text-ash hover:text-accent no-underline inline-flex items-center gap-2 mb-8">

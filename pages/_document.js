@@ -7,7 +7,13 @@ const themeInit = `(function(){try{var t=localStorage.getItem('theme');if(!t){t=
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
+      <Head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="apple-mobile-web-app-title" content="Sambit Mishra" />
+      </Head>
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <Main />

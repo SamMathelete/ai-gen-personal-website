@@ -1,0 +1,15 @@
+{
+  "name": "Sambit Mishra — Causal Inference & Causal Discovery",
+  "short_name": "Sambit Mishra",
+  "description": "Personal site of Sambit Mishra, PhD student in Electrical & Computer Engineering at USC working on causal discovery and probabilistic graphical models.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#f9faf4",
+  "theme_color": "#f9faf4",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}
