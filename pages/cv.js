@@ -13,7 +13,7 @@ export default function CV() {
       details: [
         'Advisor: Prof. Urbashi Mitra, Ming Hsieh Department of ECE',
         'GPA: 4.00/4.00',
-        'Key coursework: Probability Theory, Linear Algebra, Supervised Machine Learning, Inference & Estimation Theory.',
+        'Key coursework: Probability Theory, Linear Algebra, Supervised Machine Learning, Inference & Estimation Theory, High-Dimensional Statistics and Learning Theory, Convex Optimization.',
       ],
     },
     {
@@ -175,7 +175,7 @@ export default function CV() {
         </div>
       </Section>
 
-      <Section number="04" title="Publications">
+      <Section number="04" title="Preprints & publications">
         <ol className="space-y-6">
           {publications.map((p) => (
             <li key={p.ref} className="grid sm:grid-cols-12 gap-4 pb-6 border-b border-rule last:border-0">

@@ -97,7 +97,7 @@ export default function Research() {
             </div>
             <div className="lg:col-span-9">
               <p className="text-graphite max-w-2xl">
-                Peer-reviewed work in causal inference and wireless communications. For the most
+                Peer-reviewed work and preprints in causal inference and wireless communications. For the most
                 up-to-date list see my <a className="link-underline" href="https://scholar.google.com/citations?user=kyCSMKUAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a> profile.
               </p>
             </div>
