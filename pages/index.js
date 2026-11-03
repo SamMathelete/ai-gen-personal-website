@@ -102,6 +102,78 @@ function Node({ x, y, label, central = false, emphasized = false, delay }) {
   );
 }
 
+function Portrait() {
+  // The portrait sits on a gold offset plate, echoing the DAG halo, with a
+  // small floating status card. Captions reuse the figure convention of the
+  // rest of the page so the photo reads as part of the same system.
+  return (
+    <div className="relative max-w-sm mx-auto animate-fade-in">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 translate-x-4 translate-y-4 sm:translate-x-6 sm:translate-y-6 rounded-[2rem] border border-accentGlow/60 bg-accentGlow/10"
+      />
+      <figure className="relative aspect-[3/4] overflow-hidden rounded-[2rem] border border-rule bg-cream shadow-2xl shadow-ink/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/portrait.jpg"
+          alt="Sambit Mishra in a red hoodie and glasses, smiling, with a lake, boats and mountains behind him"
+          width="1200"
+          height="1600"
+          fetchPriority="high"
+          decoding="async"
+          className="h-full w-full object-cover object-[50%_35%]"
+        />
+        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent px-5 pb-4 pt-16">
+          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/85">
+            fig. 01 — the author, off the clock
+          </p>
+        </figcaption>
+      </figure>
+      <div className="absolute -top-4 -left-3 sm:-left-8 rounded-xl border border-rule bg-paper/95 backdrop-blur px-3.5 py-2.5 shadow-lg shadow-ink/10 animate-float">
+        <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ash">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 animate-ping" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+          </span>
+          Currently
+        </p>
+        <p className="mt-1 text-sm text-ink font-medium">USC Viterbi · Los Angeles</p>
+      </div>
+    </div>
+  );
+}
+
+function LowTideBand() {
+  // A full-bleed photograph used as a breathing space between the dense
+  // publication list and the biography. The dark overlay is theme-independent,
+  // so the white type clears contrast in both light and dark modes.
+  return (
+    <section aria-labelledby="low-tide-heading" className="relative isolate overflow-hidden border-y border-rule">
+      <div aria-hidden="true" className="photo-band absolute inset-0 -z-20" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-black/20 via-black/40 to-black/80"
+      />
+      <div className="container-wide pt-64 pb-20 sm:pt-80 sm:pb-24 text-center">
+        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/70">
+          fig. 03 — low tide, first light
+        </p>
+        <h2
+          id="low-tide-heading"
+          className="mt-6 font-display text-3xl sm:text-5xl tracking-tightest leading-tight text-white max-w-3xl mx-auto"
+        >
+          The structure was there all along. Low tide just makes it visible.
+        </h2>
+        <p className="mt-6 text-sm sm:text-base text-white/80 max-w-xl mx-auto leading-relaxed">
+          A reef at sunrise, shot on a morning walk. The same instinct runs through my research:
+          the causal graph is already in the data — the work is finding the conditions under which
+          it shows itself.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <Layout>
@@ -164,14 +236,7 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-5 relative">
-              <div className="relative aspect-square max-w-md mx-auto animate-fade-in">
-                <DagFigure />
-                <div className="absolute -bottom-3 left-0 right-0 text-center">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-ash">
-                    fig. 01 — a directed acyclic graph
-                  </p>
-                </div>
-              </div>
+              <Portrait />
             </div>
           </div>
         </div>
@@ -190,6 +255,12 @@ export default function Home() {
               identified, how to estimate it efficiently, and how much uncertainty remains when it
               cannot.
             </p>
+            <div className="mt-10 max-w-[260px] animate-fade-in">
+              <DagFigure />
+              <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-[0.25em] text-ash">
+                fig. 02 — a directed acyclic graph
+              </p>
+            </div>
           </div>
           <div className="lg:col-span-8">
             <ol className="divide-y divide-rule border-y border-rule">
@@ -265,6 +336,9 @@ export default function Home() {
           </ol>
         </div>
       </section>
+
+      {/* INTERLUDE — low tide at first light */}
+      <LowTideBand />
 
       {/* BACKGROUND + CONTACT */}
       <section className="container-wide py-20">
