@@ -1,4 +1,6 @@
+import { useCallback, useState } from 'react';
 import Layout from '../components/Layout';
+import PublicationCard, { FigureLightbox } from '../components/PublicationCard';
 import Seo from '../components/Seo';
 import { forSurface, publicationListJsonLd } from '../lib/publications';
 import { breadcrumbJsonLd, researchTopics } from '../lib/site';
@@ -41,8 +43,12 @@ const earlierProjects = [
 ];
 
 export default function Research() {
+  const [expanded, setExpanded] = useState(null);
+  const close = useCallback(() => setExpanded(null), []);
+
   return (
     <Layout>
+      <FigureLightbox pub={expanded} onClose={close} />
       <Seo
         title="Research: causal discovery & identifiability"
         description="Publications and research themes of Sambit Mishra: identifiability theory, scalable causal discovery by continuous optimization, bounds under partial identifiability, and optimized soft interventions."
@@ -97,48 +103,17 @@ export default function Research() {
             </div>
             <div className="lg:col-span-9">
               <p className="text-graphite max-w-2xl">
-                Peer-reviewed work and preprints in causal inference and wireless communications. For the most
-                up-to-date list see my <a className="link-underline" href="https://scholar.google.com/citations?user=kyCSMKUAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a> profile.
+                Peer-reviewed work and preprints in causal inference and wireless communications.
+                Click any figure to see it at full size. For the most up-to-date list see my <a className="link-underline" href="https://scholar.google.com/citations?user=kyCSMKUAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a> profile.
               </p>
             </div>
           </div>
 
-          <ol className="space-y-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {publications.map((p) => (
-              <li key={p.n} className="border-t border-rule first:border-t-0">
-                <div className="grid sm:grid-cols-12 gap-4 py-7">
-                  <div className="sm:col-span-1 font-mono text-xs text-ash">[{p.n}]</div>
-                  <div className="sm:col-span-3">
-                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink">{p.venue}</p>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent mt-1">{p.status}</p>
-                  </div>
-                  <div className="sm:col-span-8">
-                    <h3 className="font-display text-xl sm:text-2xl leading-snug tracking-tightest">
-                      {p.url ? (
-                        <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent transition-colors">
-                          {p.title}
-                        </a>
-                      ) : (
-                        <span className="text-ink">{p.title}</span>
-                      )}
-                    </h3>
-                    <p className="mt-2 text-sm text-ash">{p.authorsLine}</p>
-                    <p className="mt-3 text-graphite text-sm leading-relaxed">{p.note}</p>
-                    {p.doi && (
-                      <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block font-mono text-xs link-underline text-accent">
-                        doi: {p.doi}
-                      </a>
-                    )}
-                    {p.arxiv && (
-                      <a href={`https://arxiv.org/abs/${p.arxiv}`} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block font-mono text-xs link-underline text-ember">
-                        arXiv: {p.arxiv}
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </li>
+              <PublicationCard key={p.id} pub={p} onExpand={setExpanded} />
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 

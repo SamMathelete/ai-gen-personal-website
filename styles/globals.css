@@ -146,6 +146,13 @@
   }
 }
 
+/* Publication figures keep their white background in both themes so plot
+   colours stay faithful; in dark mode the panel is dimmed slightly to avoid
+   glare against the dark page. */
+.dark .figure-panel {
+  filter: brightness(0.86);
+}
+
 /* DAG node pulse staggering helpers */
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
