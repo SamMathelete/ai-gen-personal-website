@@ -116,7 +116,7 @@ function Portrait() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/portrait.jpg"
-          alt="Sambit Mishra in a red hoodie and glasses, smiling, with a lake, boats and mountains behind him"
+          alt="Sambit Mishra in glasses and a navy NVIDIA jacket, smiling on a sunny street with trees behind him"
           width="1200"
           height="1600"
           fetchPriority="high"
